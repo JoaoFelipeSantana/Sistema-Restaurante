@@ -62,7 +62,7 @@ public class ProdutoDAO {
             JsonArray novoArray = new JsonArray();
             JsonObject deleteProduto = new JsonObject();
 
-            for (JsonElement element : array) {
+            for (JsonElement element : array ) {
                 if (element.isJsonObject()) {
                     JsonObject produto = element.getAsJsonObject();
                     if (!produto.get("Nome").getAsString().equals(name)) {
