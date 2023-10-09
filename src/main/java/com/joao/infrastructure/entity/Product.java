@@ -11,7 +11,7 @@ public class Product {
     private String dtcreate;
 
     // == Contrutor para setar os valores da entidade ==
-    private Product(int id, String name, String description, float price, int amount, String dtupdate, String dtcreat) {
+    public Product(int id, String name, String description, float price, int amount, String dtupdate, String dtcreat) {
         this.id = id;
         this.name = name;
         this.description = description;

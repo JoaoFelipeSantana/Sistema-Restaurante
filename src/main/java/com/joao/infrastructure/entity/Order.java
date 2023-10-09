@@ -9,7 +9,7 @@ public class Order {
     private String dtcreat;
 
     // Contrutor para setar os valores da entidade
-    private Order(int id, int id_table, String listProducts, String dtupdate, String dtcreat) {
+    public Order(int id, int id_table, String listProducts, String dtupdate, String dtcreat) {
         this.id = id;
         this.id_table = id_table;
         this.listProducts = listProducts;
