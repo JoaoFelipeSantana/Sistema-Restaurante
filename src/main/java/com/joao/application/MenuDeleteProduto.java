@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class MenuDeleteProduto {
 
-    public void escluirProduto() {
+    public void excluirProduto() {
 
         Scanner scanner = new Scanner(System.in);
         FuncoesProdutos fProdutos = new FuncoesProdutos();

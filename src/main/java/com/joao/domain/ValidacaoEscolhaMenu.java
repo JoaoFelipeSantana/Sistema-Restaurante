@@ -55,7 +55,7 @@ public class ValidacaoEscolhaMenu {
 
             case 4:
                 MenuDeleteProduto deleteProduto = new MenuDeleteProduto();
-                deleteProduto.escluirProduto();
+                deleteProduto.excluirProduto();
                 break;
 
             case 0:
