@@ -25,7 +25,7 @@ public class MenuNovoPedido {
 
         fPedidos.criarPedido(id_table, order);
 
-        System.out.println("\n\u001B[32m!!! Pedido realizado com SUCESSO !!!\u001B[m");
+        System.out.println("\n\u001B[32m!!! PEDIDO REALIZADO COM SUCESSO !!!\u001B[m");
 
     }
 }

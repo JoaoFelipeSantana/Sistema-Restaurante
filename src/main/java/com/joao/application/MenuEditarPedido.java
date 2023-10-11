@@ -36,7 +36,7 @@ public class MenuEditarPedido {
 
         fPedidos.criarPedido(id_table, order);
 
-        System.out.println("\n\u001B[32m!! Produto atualizado com sucesso !!\u001B[m");
+        System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
 
     }
 }

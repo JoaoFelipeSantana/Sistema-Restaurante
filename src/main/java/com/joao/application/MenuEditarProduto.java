@@ -21,7 +21,7 @@ public class MenuEditarProduto {
 
         JsonObject produto = fProdutos.consultarProduto(name);
 
-        System.out.println("\n===== Informaões antigas =====");
+        System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
         System.out.printf(" - Nome: %s", produto.get("Nome"));
         System.out.printf("\n - Descrição: %s", produto.get("Descrição"));
         System.out.print("\n - Preço: " + produto.get("Preço"));
@@ -30,7 +30,7 @@ public class MenuEditarProduto {
 
         fProdutos.delete(name);
 
-        System.out.println("\nInsira as atualizações do produto...");
+        System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
 
         System.out.print(" - Nome: ");
         String newName = scanner.nextLine();
@@ -46,7 +46,7 @@ public class MenuEditarProduto {
 
         fProdutos.criarProduto(newName, newDescripton, newPrice, newAmount);
 
-        System.out.println("\u001B[32mProduto editado com sucesso !!!\u001B[32m");
+        System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
 
         scanner.close();
     }

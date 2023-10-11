@@ -15,7 +15,7 @@ public class MenuNovoProduto {
 
     public void infoRegistro() throws IOException {
         //Colhendo os dados do produto
-        System.out.println("\n===== Registrando novo produto =====");
+        System.out.println("\n===== REGISTRANDO PRODUTOS =====");
 
         System.out.print(" - Digite o nome do produto: ");
         name = scanner.nextLine();
@@ -30,6 +30,8 @@ public class MenuNovoProduto {
         amount = scanner.nextInt();
 
         fProdutos.criarProduto(name, description, price, amount);
+
+        System.out.println("\n\u001B[32m !!! PRODUTO CADASTRADO COM SUCESSO !!! \u001B[m");
 
     }
 

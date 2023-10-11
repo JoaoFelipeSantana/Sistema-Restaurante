@@ -16,7 +16,7 @@ public class MenuDeleteProduto {
         String name = scanner.nextLine();
         fProdutos.delete(name);
 
-        System.out.println("-- Produto deletado com sucesso --");
+        System.out.println("\n\u001B[32m !!! PRODUTO EXCLUIDO COM SUCESSO !!! \u001B[m");
 
         scanner.close();
     }
