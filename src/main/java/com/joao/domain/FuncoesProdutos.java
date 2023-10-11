@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.joao.infrastructure.daos.ProdutoDAO;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class FuncoesProdutos {
 
@@ -37,7 +36,12 @@ public class FuncoesProdutos {
         produtoCRUD.delete(name);
     }
 
-    public JsonArray consultarProdutos() throws IOException {
+    public JsonArray todosProdutos() throws IOException {
         return produtoCRUD.read();
+    }
+
+    public JsonObject consultarProduto(String name) {
+        JsonObject produto = produtoCRUD.consultarProduto(name);
+        return produto;
     }
 }
