@@ -16,8 +16,8 @@ public class FuncoesProdutos {
 
         // Criando um novo objeto para o produto novo
         JsonObject novoProduto = new JsonObject();
-
         JsonArray arrayNovo = produtoCRUD.read();
+
 
         // Adicionando informações
         novoProduto.addProperty("Nome", (String) name);

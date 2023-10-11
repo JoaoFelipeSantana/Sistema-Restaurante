@@ -1,10 +1,14 @@
 package com.joao.application;
 
+import com.google.gson.JsonElement;
 import com.joao.domain.FuncoesProdutos;
+import com.joao.domain.ValidacaoEscolhaMenu;
 
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenuEditarProduto {
@@ -13,6 +17,7 @@ public class MenuEditarProduto {
     public void editarProduto() throws IOException {
         Scanner scanner = new Scanner(System.in);
         FuncoesProdutos fProdutos = new FuncoesProdutos();
+        ValidacaoEscolhaMenu validacaoEscolhaMenu = new ValidacaoEscolhaMenu();
 
         System.out.println("\n\n===== EDITAR PRODUTO =====");
 
@@ -22,11 +27,14 @@ public class MenuEditarProduto {
         JsonObject produto = fProdutos.consultarProduto(name);
 
         System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
-        System.out.printf(" - Nome: %s", produto.get("Nome"));
-        System.out.printf("\n - Descrição: %s", produto.get("Descrição"));
-        System.out.print("\n - Preço: " + produto.get("Preço"));
-        System.out.println("\n - Quantidade: " + produto.get("Quantidade"));
+        System.out.println(" - Nome: " + produto.get("Nome"));
+        System.out.println(" - Descrição: " + produto.get("Descrição"));
+        System.out.println(" - Preço: " + produto.get("Preço"));
+        System.out.println(" - Quantidade: " + produto.get("Quantidade"));
+        System.out.println(" - Data de criação: " + produto.get("dtcreate"));
+        System.out.println(" - Data de edição: " + produto.get("dtupdate"));
         System.out.println("==============================");
+
 
         fProdutos.delete(name);
 
@@ -44,12 +52,12 @@ public class MenuEditarProduto {
         System.out.print(" - Quantidade: ");
         int newAmount = scanner.nextInt();
 
-        fProdutos.criarProduto(newName, newDescripton, newPrice, newAmount);
 
-        System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
+        if (!validacaoEscolhaMenu.validarAmount(newAmount)) {
 
+            fProdutos.criarProduto(newName, newDescripton, newPrice, newAmount);
+            System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
+        }
         scanner.close();
     }
-
-
 }

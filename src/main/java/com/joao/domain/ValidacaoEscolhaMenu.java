@@ -3,7 +3,6 @@ package com.joao.domain;
 import com.joao.application.*;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class ValidacaoEscolhaMenu {
     public void validarUsuario(String opcao) throws IOException {
@@ -97,5 +96,18 @@ public class ValidacaoEscolhaMenu {
                 voltar.menuUsuario();
                 break;
         }
+    }
+
+    public boolean validarAmount(int amount) throws IOException {
+        MenuNovoProduto novoProduto = new MenuNovoProduto();
+
+        if (amount <= 0){
+            System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
+            System.out.println("A quantidade dos produtos deve ser superior a 0");
+            System.out.println("\n Reinicie o sistema e tente novamente...");
+
+            return true;
+        }
+        return false;
     }
 }
