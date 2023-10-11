@@ -25,6 +25,7 @@ public class ValidacaoEscolhaMenu {
             MenuCliente cliente = new MenuCliente();
             cliente.menuPedido();
         }
+        scanner.close();
     }
 
     public void validarAdimin() throws IOException {
@@ -32,7 +33,7 @@ public class ValidacaoEscolhaMenu {
 
         int opcao = scanner.nextInt();
 
-        while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4) {
+        while (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 0) {
             System.out.println("\n!!! ERRO !!!");
             System.out.print("Digite novamente uma opção válida: ");
             opcao = scanner.nextInt();
@@ -45,7 +46,8 @@ public class ValidacaoEscolhaMenu {
                 break;
 
             case 2:
-
+                MenuEditarProduto atualizarProduto = new MenuEditarProduto();
+                atualizarProduto.editarProduto();
                 break;
 
             case 3:
@@ -63,6 +65,7 @@ public class ValidacaoEscolhaMenu {
                 voltar.menuUsuario();
                 break;
         }
+        scanner.close();
     }
 
     public void validarCliente() throws IOException{
@@ -78,17 +81,23 @@ public class ValidacaoEscolhaMenu {
 
         switch (opcao){
             case 1:
-
+                MenuNovoPedido menuNovoPedido = new MenuNovoPedido();
+                menuNovoPedido.novoPedido();
                 break;
 
             case 2:
+                MenuEditarPedido menuEditarPedido = new MenuEditarPedido();
+                menuEditarPedido.ediatrPedido();
                 break;
 
             case 3:
+                MenuDeletarPedido menuDeletarPedido = new MenuDeletarPedido();
+                menuDeletarPedido.deletarProduto();
                 break;
 
             case 4:
-
+                MenuPedidos menuPedidos = new MenuPedidos();
+                menuPedidos.verPedidos();
                 break;
 
             case 0:
@@ -96,5 +105,6 @@ public class ValidacaoEscolhaMenu {
                 voltar.menuUsuario();
                 break;
         }
+    scanner.close();
     }
 }
