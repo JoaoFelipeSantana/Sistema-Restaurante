@@ -92,7 +92,7 @@ public class ValidacaoEscolhaMenu {
 
             case 3:
                 MenuDeletarPedido menuDeletarPedido = new MenuDeletarPedido();
-                menuDeletarPedido.deletarProduto();
+                menuDeletarPedido.deletarPedido();
                 break;
 
             case 4:
