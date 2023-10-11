@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class MenuDeleteProduto {
 
     public void excluirProduto() {
-
         Scanner scanner = new Scanner(System.in);
         FuncoesProdutos fProdutos = new FuncoesProdutos();
 
@@ -18,5 +17,7 @@ public class MenuDeleteProduto {
         fProdutos.delete(name);
 
         System.out.println("-- Produto deletado com sucesso --");
+
+        scanner.close();
     }
 }
