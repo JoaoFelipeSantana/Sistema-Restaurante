@@ -12,7 +12,7 @@ public class MenuConsultarProdutoTudo {
 
         FuncoesProdutos fProdutos = new FuncoesProdutos();
 
-        JsonArray todosProdutos = fProdutos.consultarProdutos();
+        JsonArray todosProdutos = fProdutos.todosProdutos();
 
         System.out.println("\n===== PRODUTOS =====");
         for(JsonElement element : todosProdutos) {
