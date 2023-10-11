@@ -81,7 +81,7 @@ public class ProdutoDAO {
         }
     }
 
-    public JsonObject consultar() {
+    public JsonObject consultarProduto(String name) {
         String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
         Path path = Paths.get(filePath);
 
@@ -93,7 +93,9 @@ public class ProdutoDAO {
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
                     JsonObject produto = element.getAsJsonObject();
-                    return produto;
+                    if (produto.get("Nome").getAsString().equals(name)) {
+                        return produto;
+                    }
                 }
             }
 
