@@ -7,8 +7,6 @@ import com.joao.domain.ValidacaoEscolhaMenu;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 public class MenuEditarProduto {
@@ -31,12 +29,10 @@ public class MenuEditarProduto {
         System.out.println(" - Descrição: " + produto.get("Descrição"));
         System.out.println(" - Preço: " + produto.get("Preço"));
         System.out.println(" - Quantidade: " + produto.get("Quantidade"));
-        System.out.println(" - Data de criação: " + produto.get("dtcreate"));
-        System.out.println(" - Data de edição: " + produto.get("dtupdate"));
+        System.out.println(" - Data de criação: " + produto.get("Data Criação"));
+        System.out.println(" - Data de edição: " + produto.get("Data Edição"));
         System.out.println("==============================");
 
-
-        fProdutos.delete(name);
 
         System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
 
@@ -54,8 +50,8 @@ public class MenuEditarProduto {
 
 
         if (!validacaoEscolhaMenu.validarAmount(newAmount)) {
-
-            fProdutos.criarProduto(newName, newDescripton, newPrice, newAmount);
+            fProdutos.delete(name);
+            fProdutos.editarProduto(newName, newDescripton, newPrice, newAmount, produto.get("Data Criação").getAsString());
             System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
         }
         scanner.close();

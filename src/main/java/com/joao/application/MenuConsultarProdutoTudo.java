@@ -5,6 +5,7 @@ import com.joao.domain.FuncoesProdutos;
 import com.google.gson.*;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class MenuConsultarProdutoTudo {
 
@@ -24,15 +25,13 @@ public class MenuConsultarProdutoTudo {
                 float price = produtos.get("Preço").getAsFloat();
                 int amount = produtos.get("Quantidade").getAsInt();
 
-                System.out.printf(" - Nome: %s", nome);
-                System.out.printf("\n - Descrição: %s", description);
-                System.out.printf("\n - Preço: R$%.2f", price);
-                System.out.printf("\n - Quantidade: %d", amount);
+                System.out.println(" - Nome: " + nome);
+                System.out.println(" - Descrição: " + description);
+                System.out.println(" - Preço: " + price);
+                System.out.println(" - Quantidade: " + amount);
                 System.out.println("\n====================");
             }
         }
-
-
     }
 
 
