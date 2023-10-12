@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.joao.infrastructure.daos.PedidoDAO;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FuncoesPedidos {
 
@@ -15,8 +17,12 @@ public class FuncoesPedidos {
 
         JsonArray pedidoArray = pedidoCRUD.read();
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime date = LocalDateTime.now();
+
         novoPedido.addProperty("id_mesa", (int) id_table);
-        novoPedido.addProperty("Pedido", (int) order);
+        novoPedido.addProperty("pedido", (int) order);
+        novoPedido.addProperty("data criacao", (String) dtf.format(date));
 
         pedidoArray.add(novoPedido);
 
@@ -34,6 +40,24 @@ public class FuncoesPedidos {
     public JsonObject consultarPedido(int id_table) {
         JsonObject pedido = pedidoCRUD.consultarPedido(id_table);
         return pedido;
+    }
+
+    public void editarPedido (int id_table, int order, String dtcreate) throws IOException {
+        JsonObject novoPedido = new JsonObject();
+
+        JsonArray pedidoArray = pedidoCRUD.read();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime date = LocalDateTime.now();
+
+        novoPedido.addProperty("id_mesa", (int) id_table);
+        novoPedido.addProperty("pedido", (int) order);
+        novoPedido.addProperty("data criacao", (String) dtcreate);
+        novoPedido.addProperty("data edicao", (String) dtf.format(date));
+
+        pedidoArray.add(novoPedido);
+
+        pedidoCRUD.creat(pedidoArray);
     }
 
 }
