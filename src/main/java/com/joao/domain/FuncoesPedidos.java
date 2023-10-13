@@ -21,6 +21,7 @@ public class FuncoesPedidos {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
 
+        novoPedido.addProperty("id", (int) pedidoArray.size());
         novoPedido.addProperty("id_mesa", (int) id_table);
         novoPedido.addProperty("pedido", ((List<Integer>) order).toString());
         novoPedido.addProperty("data criacao", (String) dtf.format(date));
@@ -43,7 +44,7 @@ public class FuncoesPedidos {
         return pedido;
     }
 
-    public void editarPedido (int id_table, List<Integer> order, String dtcreate) throws IOException {
+    public void editarPedido (int id, int id_table, List<Integer> order, String dtcreate) throws IOException {
         JsonObject novoPedido = new JsonObject();
 
         JsonArray pedidoArray = pedidoCRUD.read();
@@ -51,6 +52,7 @@ public class FuncoesPedidos {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
 
+        novoPedido.addProperty("id", (int) id);
         novoPedido.addProperty("id_mesa", (int) id_table);
         novoPedido.addProperty("pedido", ((List<Integer>) order).toString());
         novoPedido.addProperty("data criacao", (String) dtcreate);

@@ -24,6 +24,7 @@ public class MenuEditarPedido {
         JsonObject pedido = fPedidos.consultarPedido(id_table);
 
         System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
+        System.out.println(" - Id: " + pedido.get("id"));
         System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
         System.out.println(" - Pedido: " + pedido.get("pedido"));
         System.out.println(" - Data de criação: " + pedido.get("data criacao"));
@@ -48,7 +49,7 @@ public class MenuEditarPedido {
                     "\nDigite a opção que deseja: ");
             opcao = scanner.nextInt();
         }
-        fPedidos.editarPedido(id_table, pratos, pedido.get("data criacao").getAsString());
+        fPedidos.editarPedido(pedido.get("id").getAsInt(), id_table, pratos, pedido.get("data criacao").getAsString());
 
         System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
 
