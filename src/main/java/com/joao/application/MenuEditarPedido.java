@@ -27,8 +27,8 @@ public class MenuEditarPedido {
         System.out.println(" - Id: " + pedido.get("id"));
         System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
         System.out.println(" - Pedido: " + pedido.get("pedido"));
-        System.out.println(" - Data de criação: " + pedido.get("data criacao"));
-        System.out.println(" - Data de edição: " + pedido.get("data edicao"));
+        System.out.println(" - Data de criação: " + pedido.get("dtcreate"));
+        System.out.println(" - Data de edição: " + pedido.get("dtupdate"));
         System.out.println("===============================");
 
         fPedidos.excluirPedido(id_table);
@@ -49,7 +49,7 @@ public class MenuEditarPedido {
                     "\nDigite a opção que deseja: ");
             opcao = scanner.nextInt();
         }
-        fPedidos.editarPedido(pedido.get("id").getAsInt(), id_table, pratos, pedido.get("data criacao").getAsString());
+        fPedidos.editarPedido(pedido.get("id").getAsInt(), id_table, pratos, pedido.get("dtcreate").getAsString());
 
         System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
 

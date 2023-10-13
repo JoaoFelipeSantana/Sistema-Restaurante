@@ -24,11 +24,11 @@ public class FuncoesProdutos {
 
         // Adicionando informações
         novoProduto.addProperty("id", (int) arrayNovo.size());
-        novoProduto.addProperty("Nome", (String) name);
-        novoProduto.addProperty("Descrição", (String) description);
-        novoProduto.addProperty("Preço", (float) price);
-        novoProduto.addProperty("Quantidade", (int) amount);
-        novoProduto.addProperty("Data Criação", (String) dtf.format(date));
+        novoProduto.addProperty("nome", (String) name);
+        novoProduto.addProperty("descricao", (String) description);
+        novoProduto.addProperty("preco", (float) price);
+        novoProduto.addProperty("quantidade", (int) amount);
+        novoProduto.addProperty("dtcreate", (String) dtf.format(date));
 
         arrayNovo.add(novoProduto);
 
@@ -59,12 +59,12 @@ public class FuncoesProdutos {
 
 
         editarProduto.addProperty("id", (int) id);
-        editarProduto.addProperty("Nome", (String) name);
-        editarProduto.addProperty("Descrição", (String) description);
-        editarProduto.addProperty("Preço", (float) price);
-        editarProduto.addProperty("Quantidade", (int) amount);
-        editarProduto.addProperty("Data Criação", (String) dtcreate);
-        editarProduto.addProperty("Data Edição", (String) dtf.format(date));
+        editarProduto.addProperty("nome", (String) name);
+        editarProduto.addProperty("descricao", (String) description);
+        editarProduto.addProperty("preco", (float) price);
+        editarProduto.addProperty("quantidade", (int) amount);
+        editarProduto.addProperty("dtcreate", (String) dtcreate);
+        editarProduto.addProperty("dtupdate", (String) dtf.format(date));
 
         arrayNovo.add(editarProduto);
 

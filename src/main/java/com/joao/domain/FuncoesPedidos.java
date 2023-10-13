@@ -24,7 +24,7 @@ public class FuncoesPedidos {
         novoPedido.addProperty("id", (int) pedidoArray.size());
         novoPedido.addProperty("id_mesa", (int) id_table);
         novoPedido.addProperty("pedido", ((List<Integer>) order).toString());
-        novoPedido.addProperty("data criacao", (String) dtf.format(date));
+        novoPedido.addProperty("dtcreate", (String) dtf.format(date));
 
         pedidoArray.add(novoPedido);
 
@@ -55,8 +55,8 @@ public class FuncoesPedidos {
         novoPedido.addProperty("id", (int) id);
         novoPedido.addProperty("id_mesa", (int) id_table);
         novoPedido.addProperty("pedido", ((List<Integer>) order).toString());
-        novoPedido.addProperty("data criacao", (String) dtcreate);
-        novoPedido.addProperty("data edicao", (String) dtf.format(date));
+        novoPedido.addProperty("dtcreate", (String) dtcreate);
+        novoPedido.addProperty("dtupdate", (String) dtf.format(date));
 
         pedidoArray.add(novoPedido);
 

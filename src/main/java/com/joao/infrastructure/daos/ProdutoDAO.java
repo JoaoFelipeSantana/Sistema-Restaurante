@@ -65,7 +65,7 @@ public class ProdutoDAO {
             for (JsonElement element : array ) {
                 if (element.isJsonObject()) {
                     JsonObject produto = element.getAsJsonObject();
-                    if (!produto.get("Nome").getAsString().equals(name)) {
+                    if (!produto.get("nome").getAsString().equals(name)) {
                         novoArray.add(produto);
                     }
                     else {
@@ -93,7 +93,7 @@ public class ProdutoDAO {
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
                     JsonObject produto = element.getAsJsonObject();
-                    if (produto.get("Nome").getAsString().equals(name)) {
+                    if (produto.get("nome").getAsString().equals(name)) {
                         return produto;
                     }
                 }

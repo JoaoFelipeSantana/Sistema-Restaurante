@@ -25,12 +25,12 @@ public class MenuEditarProduto {
         JsonObject produto = fProdutos.consultarProduto(name);
 
         System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
-        System.out.println(" - Nome: " + produto.get("Nome"));
-        System.out.println(" - Descrição: " + produto.get("Descrição"));
-        System.out.println(" - Preço: " + produto.get("Preço"));
-        System.out.println(" - Quantidade: " + produto.get("Quantidade"));
-        System.out.println(" - Data de criação: " + produto.get("Data Criação"));
-        System.out.println(" - Data de edição: " + produto.get("Data Edição"));
+        System.out.println(" - Nome: " + produto.get("nome"));
+        System.out.println(" - Descrição: " + produto.get("descricao"));
+        System.out.println(" - Preço: " + produto.get("preco"));
+        System.out.println(" - Quantidade: " + produto.get("quantidade"));
+        System.out.println(" - Data de criação: " + produto.get("dtcreate"));
+        System.out.println(" - Data de edição: " + produto.get("dtupdate"));
         System.out.println("==============================");
 
 
@@ -51,7 +51,7 @@ public class MenuEditarProduto {
 
         if (!validacaoEscolhaMenu.validarAmount(newAmount)) {
             fProdutos.delete(name);
-            fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescripton, newPrice, newAmount, produto.get("Data Criação").getAsString());
+            fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescripton, newPrice, newAmount, produto.get("dtcreate").getAsString());
             System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
         }
         scanner.close();

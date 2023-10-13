@@ -20,16 +20,18 @@ public class MenuConsultarProdutoTudo {
             if (element.isJsonObject()) {
                 JsonObject produtos = element.getAsJsonObject();
 
-                String nome = produtos.get("Nome").getAsString();
-                String description = produtos.get("Descrição").getAsString();
-                float price = produtos.get("Preço").getAsFloat();
-                int amount = produtos.get("Quantidade").getAsInt();
+                int id = produtos.get("id").getAsInt();
+                String nome = produtos.get("nome").getAsString();
+                String description = produtos.get("descricao").getAsString();
+                float price = produtos.get("preco").getAsFloat();
+                int amount = produtos.get("quantidade").getAsInt();
 
+                System.out.println(" - Número do produto: " + id);
                 System.out.println(" - Nome: " + nome);
                 System.out.println(" - Descrição: " + description);
                 System.out.println(" - Preço: " + price);
                 System.out.println(" - Quantidade: " + amount);
-                System.out.println("\n====================");
+                System.out.println("====================");
             }
         }
     }
