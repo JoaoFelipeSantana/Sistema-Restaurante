@@ -86,6 +86,7 @@ public class PedidoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
+            JsonObject vazio = new JsonObject();
 
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
@@ -95,9 +96,9 @@ public class PedidoDAO {
                     }
                 }
             }
+            return vazio;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 }
