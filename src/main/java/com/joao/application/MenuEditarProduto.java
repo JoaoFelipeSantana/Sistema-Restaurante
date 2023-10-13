@@ -58,9 +58,7 @@ public class MenuEditarProduto {
 
         else {
             System.out.println("\n Produto não encontrado");
-            System.out.println("Reinicie o prorgama e tente novamente...");
+            System.out.println("Reinicie o programa e tente novamente...");
         }
-
-        scanner.close();
     }
 }
