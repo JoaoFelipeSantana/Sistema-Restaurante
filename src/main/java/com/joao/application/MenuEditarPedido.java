@@ -23,35 +23,44 @@ public class MenuEditarPedido {
 
         JsonObject pedido = fPedidos.consultarPedido(id_table);
 
-        System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
-        System.out.println(" - Id: " + pedido.get("id"));
-        System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
-        System.out.println(" - Pedido: " + pedido.get("pedido"));
-        System.out.println(" - Data de criação: " + pedido.get("dtcreate"));
-        System.out.println(" - Data de edição: " + pedido.get("dtupdate"));
-        System.out.println("===============================");
+        if (!pedido.isEmpty()) {
 
-        fPedidos.excluirPedido(id_table);
+            System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
+            System.out.println(" - Id: " + pedido.get("id"));
+            System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
+            System.out.println(" - Pedido: " + pedido.get("pedido"));
+            System.out.println(" - Data de criação: " + pedido.get("dtcreate"));
+            System.out.println(" - Data de edição: " + pedido.get("dtupdate"));
+            System.out.println("===============================");
 
-        System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
-        System.out.print(" - Digite o número da mesa: ");
-        id_table = scanner.nextInt();
+            fPedidos.excluirPedido(id_table);
 
-        int opcao = 1;
-        while (opcao == 1) {
-            System.out.print(" - Qual opção do cardápio deseja? ");
-            int order = scanner.nextInt();
+            System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
+            System.out.print(" - Digite o número da mesa: ");
+            id_table = scanner.nextInt();
 
-            pratos.add(order);
+            int opcao = 1;
+            while (opcao == 1) {
+                System.out.print(" - Qual opção do cardápio deseja? ");
+                int order = scanner.nextInt();
 
-            System.out.print("\nDeseja adicionar outro prato?" +
-                    "\n       [1]SIM   [2]NÃO" +
-                    "\nDigite a opção que deseja: ");
-            opcao = scanner.nextInt();
+                pratos.add(order);
+
+                System.out.println("\n-----------------------------");
+                System.out.print("Deseja adicionar outro prato?" +
+                        "\n       [1]SIM   [2]NÃO" +
+                        "\n-----------------------------\n" +
+                        "\nDigite a opção que deseja: ");
+                opcao = scanner.nextInt();
+            }
+            fPedidos.editarPedido(pedido.get("id").getAsInt(), id_table, pratos, pedido.get("dtcreate").getAsString());
+
+            System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
         }
-        fPedidos.editarPedido(pedido.get("id").getAsInt(), id_table, pratos, pedido.get("dtcreate").getAsString());
 
-        System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
-
+        else {
+            System.out.println("\n Pedido não encontrado");
+            System.out.println("Reinicie o programa e tente novamente...");
+        }
     }
 }
