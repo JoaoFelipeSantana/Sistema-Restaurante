@@ -11,10 +11,10 @@ public class MenuDeleteProduto {
         FuncoesProdutos fProdutos = new FuncoesProdutos();
 
         System.out.println("\n===== EXCLUINDO PRODUTO =====");
-        System.out.print(" - Digite o nome do produto: ");
+        System.out.print(" - Digite id do produto: ");
 
-        String name = scanner.nextLine();
-        fProdutos.delete(name);
+        int id = scanner.nextInt();
+        fProdutos.delete(id);
 
         System.out.println("\n\u001B[32m !!! PRODUTO EXCLUIDO COM SUCESSO !!! \u001B[m");
 
