@@ -18,10 +18,10 @@ public class MenuEditarProduto {
 
         System.out.println("\n\n===== EDITAR PRODUTO =====");
 
-        System.out.print("Insira o nome do produto a ser editado: ");
-        String name = scanner.nextLine();
+        System.out.print("Insira o id do produto a ser editado: ");
+        int id = scanner.nextInt();
 
-        JsonObject produto = fProdutos.consultarProduto(name);
+        JsonObject produto = fProdutos.consultarProduto(id);
 
         if (!produto.isEmpty()){
             System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
@@ -50,7 +50,7 @@ public class MenuEditarProduto {
 
 
             if (!validacaoEscolhaMenu.validarAmount(newAmount)) {
-                fProdutos.delete(name);
+                fProdutos.delete(id);
                 fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescripton, newPrice, newAmount, produto.get("dtcreate").getAsString());
                 System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
             }
