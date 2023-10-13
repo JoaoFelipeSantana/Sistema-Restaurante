@@ -38,16 +38,16 @@ public class FuncoesProdutos {
     }
 
     // Deletando um produto
-    public void delete(String name) {
-        produtoCRUD.delete(name);
+    public void delete(int id) {
+        produtoCRUD.delete(id);
     }
 
     public JsonArray todosProdutos() throws IOException {
         return produtoCRUD.read();
     }
 
-    public JsonObject consultarProduto(String name) {
-        JsonObject produto = produtoCRUD.consultarProduto(name);
+    public JsonObject consultarProduto(int id) {
+        JsonObject produto = produtoCRUD.consultarProduto(id);
         return produto;
     }
 
