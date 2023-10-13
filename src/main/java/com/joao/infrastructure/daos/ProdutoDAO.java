@@ -51,7 +51,7 @@ public class ProdutoDAO {
     }
 
     // Deletando um produto
-    public JsonObject delete(String name) {
+    public JsonObject delete(int id) {
         String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
         Path path = Paths.get(filePath);
 
@@ -65,7 +65,7 @@ public class ProdutoDAO {
             for (JsonElement element : array ) {
                 if (element.isJsonObject()) {
                     JsonObject produto = element.getAsJsonObject();
-                    if (!produto.get("nome").getAsString().equals(name)) {
+                    if (!(produto.get("id").getAsInt() == id)) {
                         novoArray.add(produto);
                     }
                     else {
@@ -81,7 +81,7 @@ public class ProdutoDAO {
         }
     }
 
-    public JsonObject consultarProduto(String name) {
+    public JsonObject consultarProduto(int id) {
         String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
         Path path = Paths.get(filePath);
 
@@ -94,7 +94,7 @@ public class ProdutoDAO {
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
                     JsonObject produto = element.getAsJsonObject();
-                    if (produto.get("nome").getAsString().equals(name)) {
+                    if (produto.get("id").getAsInt() == id) {
                         return produto;
                     }
                 }
