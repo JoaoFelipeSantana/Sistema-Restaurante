@@ -21,7 +21,6 @@ public class MenuDeletarPedido {
                 flag = 2;
 
                 fPedidos.excluirPedido(id_table);
-
                 System.out.println("\n\u001B[32m !!! PEDIDO EXCLUIDO COM SUCESSO !!! \u001B[m");
             }
             catch (InputMismatchException inputMismatchException) {
