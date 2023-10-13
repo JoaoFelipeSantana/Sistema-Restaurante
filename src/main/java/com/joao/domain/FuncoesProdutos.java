@@ -23,6 +23,7 @@ public class FuncoesProdutos {
         LocalDateTime date = LocalDateTime.now();
 
         // Adicionando informações
+        novoProduto.addProperty("id", (int) arrayNovo.size());
         novoProduto.addProperty("Nome", (String) name);
         novoProduto.addProperty("Descrição", (String) description);
         novoProduto.addProperty("Preço", (float) price);
@@ -49,13 +50,15 @@ public class FuncoesProdutos {
         return produto;
     }
 
-    public void editarProduto (String name, String description, float price, int amount, String dtcreate) throws IOException {
+    public void editarProduto (int id, String name, String description, float price, int amount, String dtcreate) throws IOException {
         JsonObject editarProduto = new JsonObject();
         JsonArray arrayNovo = produtoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
 
+
+        editarProduto.addProperty("id", (int) id);
         editarProduto.addProperty("Nome", (String) name);
         editarProduto.addProperty("Descrição", (String) description);
         editarProduto.addProperty("Preço", (float) price);

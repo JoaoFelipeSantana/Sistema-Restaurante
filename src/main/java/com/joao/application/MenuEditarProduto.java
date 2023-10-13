@@ -51,7 +51,7 @@ public class MenuEditarProduto {
 
         if (!validacaoEscolhaMenu.validarAmount(newAmount)) {
             fProdutos.delete(name);
-            fProdutos.editarProduto(newName, newDescripton, newPrice, newAmount, produto.get("Data Criação").getAsString());
+            fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescripton, newPrice, newAmount, produto.get("Data Criação").getAsString());
             System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
         }
         scanner.close();
