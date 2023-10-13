@@ -27,17 +27,22 @@ public class MenuNovoProduto {
         System.out.print(" - Informe a descrição do produto: ");
         description = scanner.nextLine();
 
-        System.out.print(" - Informe o preço do produto: R$");
-        price = scanner.nextFloat();
+        if (fProdutos.validarProduto(name, description)) {
+            System.out.print(" - Informe o preço do produto: R$");
+            price = scanner.nextFloat();
 
-        System.out.print(" - Quantidade desse produto: ");
-        amount = scanner.nextInt();
+            System.out.print(" - Quantidade desse produto: ");
+            amount = scanner.nextInt();
 
-        if (!validacaoEscolhaMenu.validarAmount(amount)) {
+            if (!validacaoEscolhaMenu.validarAmount(amount)) {
 
-            fProdutos.criarProduto(name, description, price, amount);
-            System.out.println("\n\u001B[32m !!! PRODUTO CADASTRADO COM SUCESSO !!! \u001B[m");
+                fProdutos.criarProduto(name, description, price, amount);
+                System.out.println("\n\u001B[32m !!! PRODUTO CADASTRADO COM SUCESSO !!! \u001B[m");
 
+            }
+        } else {
+            System.out.println("\nNome ou desccrição já existente");
+            System.out.println("Reinicie o programa e tente novamente");
         }
     }
 }
