@@ -4,11 +4,13 @@ package com.joao.domain;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.joao.application.MenuNovoProduto;
 import com.joao.infrastructure.daos.ProdutoDAO;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
 public class FuncoesProdutos {
 
@@ -83,5 +85,18 @@ public class FuncoesProdutos {
             }
         }
         return true;
+    }
+
+    public boolean validarAmount(int amount) throws IOException {
+        MenuNovoProduto novoProduto = new MenuNovoProduto();
+        ResourceBundle messages=ResourceBundle.getBundle("msg");
+        if (amount <= 0){
+            System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
+            System.out.println(messages.getString("error.invalidAmount"));
+            System.out.println("\n Reinicie o sistema e tente novamente...");
+
+            return true;
+        }
+        return false;
     }
 }
