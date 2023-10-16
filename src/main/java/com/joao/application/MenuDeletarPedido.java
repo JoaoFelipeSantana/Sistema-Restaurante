@@ -20,8 +20,15 @@ public class MenuDeletarPedido {
                 int id_table = scanner.nextInt();
                 flag = 2;
 
-                fPedidos.excluirPedido(id_table);
-                System.out.println("\n\u001B[32m !!! PEDIDO EXCLUIDO COM SUCESSO !!! \u001B[m");
+                if (!fPedidos.consultarPedido(id_table).isEmpty()) {
+                    fPedidos.excluirPedido(id_table);
+                    System.out.println("\n\u001B[32m !!! PEDIDO EXCLUIDO COM SUCESSO !!! \u001B[m");
+                }
+                else {
+                    System.out.println("\n Pedido não encontrado");
+                    System.out.println("Reinicie o programa e tente novamente...");
+                }
+
             }
             catch (InputMismatchException inputMismatchException) {
                 System.out.println("-------------------------------------------------------");
