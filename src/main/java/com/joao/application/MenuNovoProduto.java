@@ -1,7 +1,6 @@
 package com.joao.application;
 
 import com.joao.domain.FuncoesProdutos;
-import com.joao.domain.ValidacaoEscolhaMenu;
 
 import java.io.IOException;
 
@@ -16,7 +15,6 @@ public class MenuNovoProduto {
     public void infoRegistro() throws IOException {
         Scanner scanner = new Scanner(System.in);
         FuncoesProdutos fProdutos = new FuncoesProdutos();
-        ValidacaoEscolhaMenu validacaoEscolhaMenu = new ValidacaoEscolhaMenu();
 
         //Colhendo os dados do produto
         System.out.println("\n===== REGISTRANDO PRODUTOS =====");
@@ -34,7 +32,7 @@ public class MenuNovoProduto {
             System.out.print(" - Quantidade desse produto: ");
             amount = scanner.nextInt();
 
-            if (!validacaoEscolhaMenu.validarAmount(amount)) {
+            if (!fProdutos.validarAmount(amount)) {
 
                 fProdutos.criarProduto(name, description, price, amount);
                 System.out.println("\n\u001B[32m !!! PRODUTO CADASTRADO COM SUCESSO !!! \u001B[m");
