@@ -97,17 +97,4 @@ public class ValidacaoEscolhaMenu {
                 break;
         }
     }
-
-    public boolean validarAmount(int amount) throws IOException {
-        MenuNovoProduto novoProduto = new MenuNovoProduto();
-
-        if (amount <= 0){
-            System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
-            System.out.println("A quantidade dos produtos deve ser superior a 0");
-            System.out.println("\n Reinicie o sistema e tente novamente...");
-
-            return true;
-        }
-        return false;
-    }
 }
