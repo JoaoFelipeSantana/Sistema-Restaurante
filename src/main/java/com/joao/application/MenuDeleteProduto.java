@@ -21,8 +21,15 @@ public class MenuDeleteProduto {
                 int id = scanner.nextInt();
                 flag = 2;
 
-                fProdutos.delete(id);
-                System.out.println("\n\u001B[32m !!! PRODUTO EXCLUIDO COM SUCESSO !!! \u001B[m");
+                if (!fProdutos.consultarProduto(id).isEmpty()) {
+                    fProdutos.delete(id);
+                    System.out.println("\n\u001B[32m !!! PRODUTO EXCLUIDO COM SUCESSO !!! \u001B[m");
+                }
+                else {
+                    System.out.println("\n Produto não encontrado");
+                    System.out.println("Reinicie o programa e tente novamente...");
+                }
+
             }
             catch (InputMismatchException inputMismatchException) {
                 System.out.println("-------------------------------------------------------");
