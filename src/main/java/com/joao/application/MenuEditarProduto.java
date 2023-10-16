@@ -1,7 +1,6 @@
 package com.joao.application;
 
 import com.joao.domain.FuncoesProdutos;
-import com.joao.domain.ValidacaoEscolhaMenu;
 
 import com.google.gson.JsonObject;
 
@@ -12,14 +11,14 @@ public class MenuEditarProduto {
 
 
     public void editarProduto() throws IOException {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scannerNUM = new Scanner(System.in);
+        Scanner scannerSTR = new Scanner (System.in);
         FuncoesProdutos fProdutos = new FuncoesProdutos();
-        ValidacaoEscolhaMenu validacaoEscolhaMenu = new ValidacaoEscolhaMenu();
 
         System.out.println("\n\n===== EDITAR PRODUTO =====");
 
         System.out.print("Insira o id do produto a ser editado: ");
-        int id = scanner.nextInt();
+        int id = scannerNUM.nextInt();
 
         JsonObject produto = fProdutos.consultarProduto(id);
 
@@ -37,23 +36,37 @@ public class MenuEditarProduto {
             System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
 
             System.out.print(" - Nome: ");
-            String newName = scanner.nextLine();
+            String newName = scannerSTR.nextLine();
 
             System.out.print(" - Descrição: ");
-            String newDescripton = scanner.nextLine();
+            String newDescription = scannerSTR.nextLine();
 
-            System.out.print(" - Preço: ");
-            float newPrice = scanner.nextFloat();
-
-            System.out.print(" - Quantidade: ");
-            int newAmount = scanner.nextInt();
-
-
-            if (!validacaoEscolhaMenu.validarAmount(newAmount)) {
-                fProdutos.delete(id);
-                fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescripton, newPrice, newAmount, produto.get("dtcreate").getAsString());
-                System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
+            if (!fProdutos.validarProduto(newName, newDescription)) {
+                System.out.println("\nNome ou desccrição já existente");
+                System.out.println("Reinicie o programa e tente novamente");
             }
+
+            else {
+                System.out.print(" - Preço: ");
+                float newPrice = scannerNUM.nextFloat();
+
+                System.out.print(" - Quantidade: ");
+                int newAmount = scannerNUM.nextInt();
+
+
+                if (fProdutos.validarAmount(newAmount)) {
+                    System.out.println("\nQuantidade do produto não pode ser inferior a uma unidade");
+                    System.out.println("Reinicie o programa e tente novamente");
+                }
+
+                else {
+                    fProdutos.delete(id);
+                    fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescription, newPrice, newAmount, produto.get("dtcreate").getAsString());
+                    System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
+                }
+
+            }
+
         }
 
         else {
