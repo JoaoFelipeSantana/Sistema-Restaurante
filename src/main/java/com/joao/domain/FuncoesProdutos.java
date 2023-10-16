@@ -87,14 +87,8 @@ public class FuncoesProdutos {
         return true;
     }
 
-    public boolean validarAmount(int amount) throws IOException {
-        MenuNovoProduto novoProduto = new MenuNovoProduto();
-        ResourceBundle messages=ResourceBundle.getBundle("msg");
+    public boolean validarAmount(int amount) {
         if (amount <= 0){
-            System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
-            System.out.println(messages.getString("error.invalidAmount"));
-            System.out.println("\n Reinicie o sistema e tente novamente...");
-
             return true;
         }
         return false;
