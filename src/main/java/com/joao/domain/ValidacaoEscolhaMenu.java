@@ -6,13 +6,6 @@ import java.io.IOException;
 
 public class ValidacaoEscolhaMenu {
     public void validarUsuario(String opcao) throws IOException {
-        MenuIniciar menuIniciar = new MenuIniciar();
-
-        while (!opcao.equals("1") && !opcao.equals("2")) {
-            System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
-            System.out.println("Digite novamente uma opção válida");
-            menuIniciar.menuUsuario();
-        }
 
         if (opcao.equals("1")) {
             MenuAdimin adimin = new MenuAdimin();
