@@ -40,6 +40,21 @@ public class ValidacaoEscolhaMenu {
                 deleteProduto.excluirProduto();
                 break;
 
+            case "5":
+                MenuNovoPedido menuNovoPedido = new MenuNovoPedido();
+                menuNovoPedido.novoPedido();
+                break;
+
+            case "6":
+                MenuDeletarPedido menuDeletarPedido = new MenuDeletarPedido();
+                menuDeletarPedido.deletarPedido();
+                break;
+
+            case "7":
+                MenuPedidos menuPedidos = new MenuPedidos();
+                menuPedidos.verPedidos();
+                break;
+
             case "0":
                 MenuIniciar voltar = new MenuIniciar();
                 voltar.menuUsuario();
@@ -50,24 +65,15 @@ public class ValidacaoEscolhaMenu {
     public void validarCliente(String opcao) throws IOException{
 
         switch (opcao){
-            case "1":
-                MenuNovoPedido menuNovoPedido = new MenuNovoPedido();
-                menuNovoPedido.novoPedido();
-                break;
 
-            case "2":
+            case "1":
                 MenuEditarPedido menuEditarPedido = new MenuEditarPedido();
                 menuEditarPedido.ediatrPedido();
                 break;
 
-            case "3":
-                MenuDeletarPedido menuDeletarPedido = new MenuDeletarPedido();
-                menuDeletarPedido.deletarPedido();
-                break;
-
-            case "4":
-                MenuPedidos menuPedidos = new MenuPedidos();
-                menuPedidos.verPedidos();
+            case "2":
+                MenuConsultarPedidoUnico consultarPedido = new MenuConsultarPedidoUnico();
+                consultarPedido.consultarPedidoUnico();
                 break;
 
             case "0":
