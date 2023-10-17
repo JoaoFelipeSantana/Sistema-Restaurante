@@ -14,15 +14,13 @@ public class MenuCliente {
 
             System.out.println("\n===== CLIENTE =====");
             System.out.println(" [1] Novo pedido" +
-                    "\n [2] Editar pedido" +
-                    "\n [3] Deletar pedido" +
-                    "\n [4] Ver pedidos" +
+                    "\n [2] Ver pedidos" +
                     "\n [0] Voltar ao menu anterior" +
                     "\n===================");
             System.out.print("Digite a opção que deseja: ");
             String opcao = scanner.next();
 
-            if (!opcao.equals("1") && !opcao.equals("2") && !opcao.equals("3") && !opcao.equals("4") && !opcao.equals("0")) {
+            if (!opcao.equals("1") && !opcao.equals("2") && !opcao.equals("0")) {
                 System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
                 System.out.println("Digite novamente uma opção válida");
             }
