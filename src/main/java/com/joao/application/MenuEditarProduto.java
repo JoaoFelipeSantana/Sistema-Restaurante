@@ -48,29 +48,30 @@ public class MenuEditarProduto {
                     System.out.print(" - Descrição: ");
                     String newDescription = scannerSTR.nextLine();
 
-                    if (!fProdutos.validarProduto(newName, newDescription)) {
-                        System.out.println("\nNome ou desccrição já existente");
+                    System.out.print(" - Quantidade: ");
+                    int newAmount = scannerNUM.nextInt();
+
+                    flag_erro = 2;
+                    System.out.print(" - Preço: ");
+                    float newPrice = scannerNUM.nextFloat();
+
+                    if (fProdutos.validarAmount(newAmount)) {
+                        System.out.println("\nQuantidade do produto não pode ser inferior a uma unidade");
                         System.out.println("Reinicie o programa e tente novamente");
                         flag = 2;
                     }
 
                     else {
-                        System.out.print(" - Quantidade: ");
-                        int newAmount = scannerNUM.nextInt();
 
-                        flag_erro = 2;
-                        System.out.print(" - Preço: ");
-                        float newPrice = scannerNUM.nextFloat();
-
-                        if (fProdutos.validarAmount(newAmount)) {
-                            System.out.println("\nQuantidade do produto não pode ser inferior a uma unidade");
-                            System.out.println("Reinicie o programa e tente novamente");
+                        if (fProdutos.validarAtualizacao(newName, newDescription, newPrice, newAmount, produto)) {
+                            System.out.println("\n Nenhuma informação alterada");
+                            System.out.println("\u001B[31m!!! ATUALIZAÇÃO NÃO EFETUADA !!!\u001B[m");
                             flag = 2;
                         }
 
                         else {
                             fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescription, newPrice, newAmount, produto.get("dtcreate").getAsString());
-                            System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[32m");
+                            System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[m");
                             flag = 2;
                         }
                     }
@@ -100,7 +101,6 @@ public class MenuEditarProduto {
                     System.out.println("          Tente novamente (ex: 1,2; 7,3...)");
                     System.out.println("----------------------------------------------------\n");
                 }
-
             }
         }
     }
