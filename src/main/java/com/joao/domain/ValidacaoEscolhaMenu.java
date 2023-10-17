@@ -8,8 +8,8 @@ public class ValidacaoEscolhaMenu {
     public void validarUsuario(String opcao) throws IOException {
 
         if (opcao.equals("1")) {
-            MenuAdimin adimin = new MenuAdimin();
-            adimin.menuProduto();
+            MenuLogin login = new MenuLogin();
+            login.validarLogin();
         }
         else{
             MenuCliente cliente = new MenuCliente();
