@@ -18,13 +18,6 @@ public class ValidacaoEscolhaMenu {
     }
 
     public void validarAdimin(String opcao) throws IOException {
-        MenuAdimin menuAdimin = new MenuAdimin();
-
-        while (!opcao.equals("1") && !opcao.equals("2") && !opcao.equals("3") && !opcao.equals("4") && !opcao.equals("0")) {
-            System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
-            System.out.println("Digite novamente uma opção válida");
-            menuAdimin.menuProduto();
-        }
 
         switch (opcao){
             case "1":
