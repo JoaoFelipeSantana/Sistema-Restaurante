@@ -93,4 +93,14 @@ public class FuncoesProdutos {
         }
         return false;
     }
+
+    public boolean validarAtualizacao(String newName, String newDescription, Float newPrice, int newAmount, JsonObject produto) {
+        if (produto.get("nome").getAsString().equals(newName) &&
+                produto.get("descricao").getAsString().equals(newDescription) &&
+                produto.get("preco").getAsFloat() == newPrice &&
+                produto.get("quantidade").getAsInt() == newAmount) {
+            return true;
+        }
+    return false;
+    }
 }
