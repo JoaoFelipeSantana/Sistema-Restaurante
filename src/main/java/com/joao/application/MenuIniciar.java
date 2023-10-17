@@ -21,6 +21,7 @@ public class MenuIniciar {
 
             if (opcao.equals("1") || opcao.equals("2")) {
                 validar.validarUsuario(opcao.strip());
+                break;
             }
             else {
                 System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
