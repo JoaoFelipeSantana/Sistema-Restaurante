@@ -41,7 +41,6 @@ public class MenuEditarPedido {
 
                     System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
                     System.out.print(" - Digite o número da mesa: ");
-                    int newId_table = scanner.nextInt();
 
                     int opcao = 1;
                     while (opcao == 1) {
@@ -60,7 +59,7 @@ public class MenuEditarPedido {
                     flag = 2;
                     fPedidos.excluirPedido(id_table);
 
-                    fPedidos.editarPedido(pedido.get("id").getAsInt(), newId_table, pratos, pedido.get("dtcreate").getAsString());
+                    fPedidos.editarPedido(pedido.get("id").getAsInt(), pedido.get("id_mesa").getAsInt(), pratos, pedido.get("dtcreate").getAsString());
                     System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
                 }
 
