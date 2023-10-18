@@ -10,7 +10,7 @@ public class MenuDeletarPedido {
     public void deletarPedido() {
         FuncoesPedidos fPedidos = new FuncoesPedidos();
 
-        System.out.println("\n===== EXCLUINDO PEDIDO =====");
+        System.out.println("\n======== EXCLUINDO MESA ========");
         int flag = 1;
         while (flag == 1) {
             Scanner scanner = new Scanner(System.in);
@@ -22,21 +22,24 @@ public class MenuDeletarPedido {
 
                 if (!fPedidos.consultarPedido(id_table).isEmpty()) {
                     fPedidos.excluirPedido(id_table);
-                    System.out.println("\n\u001B[32m !!! PEDIDO EXCLUIDO COM SUCESSO !!! \u001B[m");
+                    System.out.println("\n===================================");
+                    System.out.println("\n\u001B[32m !!! MESA EXCLUIDO COM SUCESSO !!! \u001B[m");
+                    System.out.println("===================================");
                 }
                 else {
-                    System.out.println("\n Pedido não encontrado");
+                    System.out.println("\n========================================");
+                    System.out.println("            Mesa não encontrado");
                     System.out.println("Reinicie o programa e tente novamente...");
+                    System.out.println("========================================");
                 }
 
             }
             catch (InputMismatchException inputMismatchException) {
-                System.out.println("-------------------------------------------------------");
+                System.out.println("\n=======================================================");
                 System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                 System.out.println("Valor digitado fora dos parâmetros de um número inteiro");
                 System.out.println("           Tente novamente (ex: 1, 2, 3...)");
-                System.out.println("-------------------------------------------------------\n");
-
+                System.out.println("=======================================================\n");
             }
 
         }

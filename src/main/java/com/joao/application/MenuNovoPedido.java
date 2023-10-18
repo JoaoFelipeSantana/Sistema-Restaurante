@@ -20,7 +20,7 @@ public class MenuNovoPedido {
 
         List<Integer> pratos = new ArrayList<>();
 
-        System.out.println("\n===== FAÇA SEU NOVO PEDIDO =====");
+        System.out.println("\n======== REGISTRANDO NOVA MESA ========");
 
         int flag = 1;
         while (flag == 1) {
@@ -48,15 +48,17 @@ public class MenuNovoPedido {
                 flag = 2;
 
                 fPedidos.criarPedido(id_table, pratos);
-                System.out.println("\n\u001B[32m!!! PEDIDO REALIZADO COM SUCESSO !!!\u001B[m");
+                System.out.println("\n===================================");
+                System.out.println("\u001B[32m!!! MESA REGISTRADA COM SUCESSO !!!\u001B[m");
+                System.out.println("===================================");
 
             }
             catch (InputMismatchException inputMismatchException) {
-                System.out.println("-------------------------------------------------------");
+                System.out.println("\n=======================================================");
                 System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                 System.out.println("Valor digitado fora dos parâmetros de um número inteiro");
                 System.out.println("           Tente novamente (ex: 1, 2, 3...)");
-                System.out.println("-------------------------------------------------------\n");
+                System.out.println("=======================================================\n");
             }
 
         }

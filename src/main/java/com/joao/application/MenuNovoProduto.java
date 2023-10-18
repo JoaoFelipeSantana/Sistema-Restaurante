@@ -17,7 +17,7 @@ public class MenuNovoProduto {
         FuncoesProdutos fProdutos = new FuncoesProdutos();
 
         //Colhendo os dados do produto
-        System.out.println("\n===== REGISTRANDO PRODUTOS =====");
+        System.out.println("\n======== REGISTRANDO PRODUTOS ========");
 
         int flag = 1;
         int flag_erro = 1;
@@ -33,8 +33,10 @@ public class MenuNovoProduto {
                 description = scannerSTR.nextLine();
 
                 if (!fProdutos.validarProduto(name, description)) {
+                    System.out.println("\n=====================================");
                     System.out.println("\nNome ou desccrição já existente");
                     System.out.println("Reinicie o programa e tente novamente");
+                    System.out.println("=====================================");
                     flag = 2;
                 }
 
@@ -47,14 +49,18 @@ public class MenuNovoProduto {
                     price = scannerNUM.nextFloat();
 
                     if (fProdutos.validarAmount(amount)) {
-                        System.out.println("\nQuantidade do produto não pode ser inferior a uma unidade");
-                        System.out.println("Reinicie o programa e tente novamente");
+                        System.out.println("\n=========================================================");
+                        System.out.println("Quantidade do produto não pode ser inferior a uma unidade");
+                        System.out.println("          Reinicie o programa e tente novamente");
+                        System.out.println("=========================================================");
                         flag = 2;
                     }
 
                     else {
                         fProdutos.criarProduto(name, description, price, amount);
+                        System.out.println("\n========================================");
                         System.out.println("\n\u001B[32m !!! PRODUTO CADASTRADO COM SUCESSO !!! \u001B[m");
+                        System.out.println("========================================");
                         flag = 2;
                     }
                 }
@@ -62,18 +68,18 @@ public class MenuNovoProduto {
             catch (InputMismatchException inputMismatchException) {
 
                 if (flag_erro == 1) {
-                    System.out.println("-------------------------------------------------------");
+                    System.out.println("\n=======================================================");
                     System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                     System.out.println("Valor digitado fora dos parâmetros de um número inteiro");
                     System.out.println("           Tente novamente (ex: 1, 2, 3...)");
-                    System.out.println("-------------------------------------------------------\n");
+                    System.out.println("=======================================================\n");
                 }
                 else {
-                    System.out.println("----------------------------------------------------");
+                    System.out.println("\n====================================================");
                     System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                     System.out.println("Valor digitado fora dos parâmetros de um número real");
                     System.out.println("          Tente novamente (ex: 1,2; 7,3...)");
-                    System.out.println("----------------------------------------------------\n");
+                    System.out.println("====================================================\n");
                 }
             }
         }

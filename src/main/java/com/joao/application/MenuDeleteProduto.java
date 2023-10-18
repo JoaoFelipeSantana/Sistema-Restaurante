@@ -23,20 +23,25 @@ public class MenuDeleteProduto {
 
                 if (!fProdutos.consultarProduto(id).isEmpty()) {
                     fProdutos.delete(id);
+
+                    System.out.println("\n======================================");
                     System.out.println("\n\u001B[32m !!! PRODUTO EXCLUIDO COM SUCESSO !!! \u001B[m");
+                    System.out.println("======================================");
                 }
                 else {
-                    System.out.println("\n Produto não encontrado");
+                    System.out.println("\n========================================");
+                    System.out.println("\n         Produto não encontrado");
                     System.out.println("Reinicie o programa e tente novamente...");
+                    System.out.println("========================================");
                 }
 
             }
             catch (InputMismatchException inputMismatchException) {
-                System.out.println("-------------------------------------------------------");
+                System.out.println("\n=======================================================");
                 System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                 System.out.println("Valor digitado fora dos parâmetros de um número inteiro");
                 System.out.println("           Tente novamente (ex: 1, 2, 3...)");
-                System.out.println("-------------------------------------------------------\n");
+                System.out.println("=======================================================\n");
 
             }
         }
