@@ -12,17 +12,19 @@ public class MenuCliente {
         while (true) {
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\n===== CLIENTE =====");
+            System.out.println("\n========== CLIENTE ==========");
             System.out.println(" [1] Novo pedido" +
                     "\n [2] Ver pedidos" +
                     "\n [0] Voltar ao menu anterior" +
-                    "\n===================");
+                    "\n=============================");
             System.out.print("Digite a opção que deseja: ");
             String opcao = scanner.next();
 
             if (!opcao.equals("1") && !opcao.equals("2") && !opcao.equals("0")) {
-                System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
+                System.out.println("\n=================================");
+                System.out.println("\u001B[31m          !!! ERRO !!!   \u001B[m");
                 System.out.println("Digite novamente uma opção válida");
+                System.out.println("=================================");
             }
 
             else {

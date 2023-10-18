@@ -12,10 +12,10 @@ public class MenuIniciar {
         String opcao;
 
         while (true) {
-            System.out.println("\n===== USUÁRIO =====");
+            System.out.println("\n=========== USUÁRIO ===========");
             System.out.println(" [1] Administrador" +
                     "\n [2] Cliente" +
-                    "\n===================");
+                    "\n===============================");
             System.out.print("Digite a opção que deseja: ");
             opcao = scanner.next();
 
@@ -24,8 +24,10 @@ public class MenuIniciar {
                 break;
             }
             else {
-                System.out.println("\n\u001B[31m   !!! ERRO !!!   \u001B[m");
+                System.out.println("\n=================================");
+                System.out.println("\u001B[31m          !!! ERRO !!!   \u001B[m");
                 System.out.println("Digite novamente uma opção válida");
+                System.out.println("=================================");
             }
         }
     }

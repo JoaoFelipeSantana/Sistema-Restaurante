@@ -16,7 +16,7 @@ public class MenuEditarPedido {
         FuncoesPedidos fPedidos = new FuncoesPedidos();
 
 
-        System.out.println("\n===== EDITAR PEDIDO =====");
+        System.out.println("\n======== EDITAR PEDIDO ========");
 
         int flag = 1;
         while (flag == 1) {
@@ -31,16 +31,15 @@ public class MenuEditarPedido {
 
                 if (!pedido.isEmpty()) {
 
-                    System.out.println("\n===== INFORMAÇÕES ANTIGAS =====");
+                    System.out.println("\n========== INFORMAÇÕES ANTIGAS ==========");
                     System.out.println(" - Id: " + pedido.get("id"));
                     System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
                     System.out.println(" - Pedido: " + pedido.get("pedido"));
                     System.out.println(" - Data de criação: " + pedido.get("dtcreate"));
                     System.out.println(" - Data de edição: " + pedido.get("dtupdate"));
-                    System.out.println("===============================");
+                    System.out.println("=========================================");
 
-                    System.out.println("\n===== INFORMAÇÕES ATUALIZADAS =====");
-                    System.out.print(" - Digite o número da mesa: ");
+                    System.out.println("\n======= INFORMAÇÕES ATUALIZADAS =======");
 
                     int opcao = 1;
                     while (opcao == 1) {
@@ -58,25 +57,28 @@ public class MenuEditarPedido {
                     }
                     flag = 2;
                     fPedidos.excluirPedido(id_table);
-
                     fPedidos.editarPedido(pedido.get("id").getAsInt(), pedido.get("id_mesa").getAsInt(), pratos, pedido.get("dtcreate").getAsString());
-                    System.out.println("\n\u001B[32m!!! PEDIDO ATUALIZADO COM SUCESSO !!!\u001B[m");
+
+                    System.out.println("\n======================================");
+                    System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[m");
+                    System.out.println("======================================");
                 }
 
                 else {
                     flag = 2;
-
-                    System.out.println("\n Pedido não encontrado");
+                    System.out.println("\n========================================");
+                    System.out.println("          Pedido não encontrado");
                     System.out.println("Reinicie o programa e tente novamente...");
+                    System.out.println("========================================");
                 }
 
             }
             catch (InputMismatchException inputMismatchException) {
-                System.out.println("-------------------------------------------------------");
+                System.out.println("\n=======================================================");
                 System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                 System.out.println("Valor digitado fora dos parâmetros de um número inteiro");
                 System.out.println("           Tente novamente (ex: 1, 2, 3...)");
-                System.out.println("-------------------------------------------------------\n");
+                System.out.println("=======================================================\n");
             }
         }
     }

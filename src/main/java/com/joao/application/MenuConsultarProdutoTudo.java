@@ -15,7 +15,7 @@ public class MenuConsultarProdutoTudo {
 
         JsonArray todosProdutos = fProdutos.todosProdutos();
 
-        System.out.println("\n===== PRODUTOS =====");
+        System.out.println("\n=============== PRODUTOS ===============");
         for(JsonElement element : todosProdutos) {
             if (element.isJsonObject()) {
                 JsonObject produtos = element.getAsJsonObject();
@@ -31,7 +31,7 @@ public class MenuConsultarProdutoTudo {
                 System.out.println(" - Descrição: " + description);
                 System.out.println(" - Preço: " + price);
                 System.out.println(" - Quantidade: " + amount);
-                System.out.println("====================");
+                System.out.println("========================================");
             }
         }
     }

@@ -11,7 +11,7 @@ public class MenuConsultarPedidoUnico {
     public void consultarPedidoUnico() {
         FuncoesPedidos fPedidos = new FuncoesPedidos();
 
-        System.out.println("\n===== CONSULTANDO PEDIDO =====");
+        System.out.println("\n============== CONSULTANDO PEDIDO ==============");
 
         int flag = 1;
         while (flag == 1) {
@@ -25,24 +25,26 @@ public class MenuConsultarPedidoUnico {
                 JsonObject pedido = fPedidos.consultarPedido(id_table);
 
                 if (!pedido.isEmpty()) {
-                    System.out.println("\n===== INFOMRAÇÕES DA MESA =====");
+                    System.out.println("\n========== INFOMRAÇÕES DA MESA ==========");
                     System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
                     System.out.println(" - Pedido(s): " + pedido.get("pedido"));
                     System.out.println(" - Última edição: " + pedido.get("dtupdate"));
-                    System.out.println("===============================");
+                    System.out.println("=========================================");
                 }
                 else {
-                    System.out.println("\n Mesa não encontrada");
-                    System.out.println("Reinicie o programa e tente novamente...");
+                    System.out.println("\n==========================================");
+                    System.out.println("          Mesa não encontrada");
+                    System.out.println(" Reinicie o programa e tente novamente...");
+                    System.out.println("==========================================");
                 }
 
             }
             catch (InputMismatchException inputMismatchException) {
-                System.out.println("-------------------------------------------------------");
+                System.out.println("\n=======================================================");
                 System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                 System.out.println("Valor digitado fora dos parâmetros de um número inteiro");
                 System.out.println("           Tente novamente (ex: 1, 2, 3...)");
-                System.out.println("-------------------------------------------------------\n");
+                System.out.println("=======================================================\n");
             }
         }
     }
