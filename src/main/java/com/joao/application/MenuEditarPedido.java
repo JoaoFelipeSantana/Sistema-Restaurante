@@ -11,9 +11,9 @@ import com.joao.domain.FuncoesPedidos;
 
 public class MenuEditarPedido {
 
-    public void ediatrPedido() throws IOException {
+    public void editOrder() throws IOException {
 
-        FuncoesPedidos fPedidos = new FuncoesPedidos();
+        FuncoesPedidos fOrders = new FuncoesPedidos();
 
 
         System.out.println("\n======== EDITAR PEDIDO ========");
@@ -25,39 +25,39 @@ public class MenuEditarPedido {
             try  {
                 System.out.print(" - Informe o número da mesa: ");
                 int id_table = scanner.nextInt();
-                List<Integer> pratos = new ArrayList<>();
+                List<Integer> dishes = new ArrayList<>();
 
-                JsonObject pedido = fPedidos.consultarPedido(id_table);
+                JsonObject order = fOrders.consultOrder(id_table);
 
-                if (!pedido.isEmpty()) {
+                if (!order.isEmpty()) {
 
                     System.out.println("\n========== INFORMAÇÕES ANTIGAS ==========");
-                    System.out.println(" - Id: " + pedido.get("id"));
-                    System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
-                    System.out.println(" - Pedido: " + pedido.get("pedido"));
-                    System.out.println(" - Data de criação: " + pedido.get("dtcreate"));
-                    System.out.println(" - Data de edição: " + pedido.get("dtupdate"));
+                    System.out.println(" - Id: " + order.get("id"));
+                    System.out.println(" - Número da mesa: " + order.get("id_mesa"));
+                    System.out.println(" - Pedido: " + order.get("pedido"));
+                    System.out.println(" - Data de criação: " + order.get("dtcreate"));
+                    System.out.println(" - Data de edição: " + order.get("dtupdate"));
                     System.out.println("=========================================");
 
                     System.out.println("\n======= INFORMAÇÕES ATUALIZADAS =======");
 
-                    int opcao = 1;
-                    while (opcao == 1) {
+                    int option = 1;
+                    while (option == 1) {
                         System.out.print(" - Qual opção do cardápio deseja? ");
-                        int order = scanner.nextInt();
+                        int optionDishes = scanner.nextInt();
 
-                        pratos.add(order);
+                        dishes.add(optionDishes);
 
                         System.out.println("\n-----------------------------");
                         System.out.print("Deseja adicionar outro prato?" +
                                 "\n       [1]SIM   [2]NÃO" +
                                 "\n-----------------------------\n" +
                                 "\nDigite a opção que deseja: ");
-                        opcao = scanner.nextInt();
+                        option = scanner.nextInt();
                     }
                     flag = 2;
-                    fPedidos.excluirPedido(id_table);
-                    fPedidos.editarPedido(pedido.get("id").getAsInt(), pedido.get("id_mesa").getAsInt(), pratos, pedido.get("dtcreate").getAsString());
+                    fOrders.deleteOrder(id_table);
+                    fOrders.editOrder(order.get("id").getAsInt(), order.get("id_mesa").getAsInt(), dishes, order.get("dtcreate").getAsString());
 
                     System.out.println("\n======================================");
                     System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[m");

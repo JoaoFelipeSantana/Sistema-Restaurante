@@ -10,15 +10,12 @@ import java.util.Scanner;
 
 public class MenuNovoPedido {
 
-    int id_table, order;
+    public void newOrder() throws IOException {
+        FuncoesPedidos fOrders = new FuncoesPedidos();
+        List<Integer> dishes = new ArrayList<>();
 
+        int id_table, optionDishes;
 
-    FuncoesPedidos fPedidos = new FuncoesPedidos();
-
-
-    public void novoPedido() throws IOException {
-
-        List<Integer> pratos = new ArrayList<>();
 
         System.out.println("\n======== REGISTRANDO NOVA MESA ========");
 
@@ -30,24 +27,24 @@ public class MenuNovoPedido {
                 System.out.print(" - Informe o número da sua mesa: ");
                 id_table = scannerPedido.nextInt();
 
-                int opcao = 1;
-                while (opcao == 1) {
+                int option = 1;
+                while (option == 1) {
                     System.out.print(" - Qual opção do cardápio deseja? ");
-                    order = scannerPedido.nextInt();
+                    optionDishes = scannerPedido.nextInt();
 
-                    pratos.add(order);
+                    dishes.add(optionDishes);
 
                     System.out.println("\n-----------------------------");
                     System.out.print("Deseja adicionar outro prato?" +
                             "\n       [1]SIM   [2]NÃO" +
                             "\n-----------------------------\n" +
                             "\nDigite a opção que deseja: ");
-                    opcao = scannerPedido.nextInt();
+                    option = scannerPedido.nextInt();
 
                 }
                 flag = 2;
 
-                fPedidos.criarPedido(id_table, pratos);
+                fOrders.createOrder(id_table, dishes);
                 System.out.println("\n===================================");
                 System.out.println("\u001B[32m!!! MESA REGISTRADA COM SUCESSO !!!\u001B[m");
                 System.out.println("===================================");

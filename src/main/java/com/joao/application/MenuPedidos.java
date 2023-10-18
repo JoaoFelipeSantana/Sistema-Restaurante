@@ -9,18 +9,18 @@ import java.io.IOException;
 
 public class MenuPedidos {
 
-    public void verPedidos() throws IOException {
-        FuncoesPedidos fPedidos = new FuncoesPedidos();
+    public void consultOrders() throws IOException {
+        FuncoesPedidos fOrders = new FuncoesPedidos();
 
-        JsonArray pedidos = fPedidos.verPedidos();
+        JsonArray orders = fOrders.viewOrders();
 
         System.out.println("\n========== PEDIDOS ==========");
-        for (JsonElement element: pedidos) {
+        for (JsonElement element: orders) {
             if (element.isJsonObject()) {
-                JsonObject infoComanda = element.getAsJsonObject();
+                JsonObject infoOrders = element.getAsJsonObject();
 
-                int id_table = infoComanda.get("id_mesa").getAsInt();
-                String order = infoComanda.get("pedido").getAsString();
+                int id_table = infoOrders.get("id_mesa").getAsInt();
+                String order = infoOrders.get("pedido").getAsString();
 
                 System.out.printf(" - Número da mesa: %d", id_table);
                 System.out.printf("\n - Número do(s) pedido: %s", order);

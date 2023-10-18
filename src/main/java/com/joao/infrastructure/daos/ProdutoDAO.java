@@ -18,11 +18,11 @@ import java.nio.file.Paths;
 public class ProdutoDAO {
 
     // Criando um novo produto
-    public void create(JsonArray listaProdutos) throws IOException{
+    public void create(JsonArray newProduct) throws IOException{
         FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\produtos.json");
         BufferedWriter wr = new BufferedWriter(writer);
 
-        wr.write(listaProdutos.toString());
+        wr.write(newProduct.toString());
         wr.close();
         writer.close();
 
@@ -38,15 +38,15 @@ public class ProdutoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
-            JsonArray novoArray = new JsonArray();
+            JsonArray arrayNew = new JsonArray();
 
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
                     JsonObject local = element.getAsJsonObject();
-                    novoArray.add(local);
+                    arrayNew.add(local);
                 }
             }
-            return novoArray;
+            return arrayNew;
         }
     }
 
@@ -59,29 +59,29 @@ public class ProdutoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
-            JsonArray novoArray = new JsonArray();
-            JsonObject deleteProduto = new JsonObject();
+            JsonArray arrayNew = new JsonArray();
+            JsonObject deleteProduct = new JsonObject();
 
             for (JsonElement element : array ) {
                 if (element.isJsonObject()) {
-                    JsonObject produto = element.getAsJsonObject();
-                    if (!(produto.get("id").getAsInt() == id)) {
-                        novoArray.add(produto);
+                    JsonObject product = element.getAsJsonObject();
+                    if (!(product.get("id").getAsInt() == id)) {
+                        arrayNew.add(product);
                     }
                     else {
-                        deleteProduto = produto;
+                        deleteProduct = product;
                     }
                 }
             }
-            create(novoArray);
-            return deleteProduto;
+            create(arrayNew);
+            return deleteProduct;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public JsonObject consultarProduto(int id) {
+    public JsonObject consultProduct(int id) {
         String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
         Path path = Paths.get(filePath);
 
@@ -89,17 +89,17 @@ public class ProdutoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
-            JsonObject vazio = new JsonObject();
+            JsonObject empty = new JsonObject();
 
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
-                    JsonObject produto = element.getAsJsonObject();
-                    if (produto.get("id").getAsInt() == id) {
-                        return produto;
+                    JsonObject product = element.getAsJsonObject();
+                    if (product.get("id").getAsInt() == id) {
+                        return product;
                     }
                 }
             }
-            return vazio;
+            return empty;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

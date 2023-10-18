@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuCliente {
-    ValidacaoEscolhaMenu validar = new ValidacaoEscolhaMenu();
-    public void menuPedido() throws IOException {
+    ValidacaoEscolhaMenu validate = new ValidacaoEscolhaMenu();
+    public void menuOrder() throws IOException {
 
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -18,9 +18,9 @@ public class MenuCliente {
                     "\n [0] Voltar ao menu anterior" +
                     "\n=============================");
             System.out.print("Digite a opção que deseja: ");
-            String opcao = scanner.next();
+            String option = scanner.next();
 
-            if (!opcao.equals("1") && !opcao.equals("2") && !opcao.equals("0")) {
+            if (!option.equals("1") && !option.equals("2") && !option.equals("0")) {
                 System.out.println("\n=================================");
                 System.out.println("\u001B[31m          !!! ERRO !!!   \u001B[m");
                 System.out.println("Digite novamente uma opção válida");
@@ -28,7 +28,7 @@ public class MenuCliente {
             }
 
             else {
-                validar.validarCliente(opcao.strip());
+                validate.validateClient(option.strip());
                 break;
             }
         }

@@ -11,13 +11,13 @@ import java.util.Scanner;
 public class MenuEditarProduto {
 
 
-    public void editarProduto() throws IOException {
-        FuncoesProdutos fProdutos = new FuncoesProdutos();
+    public void editProduct() throws IOException {
+        FuncoesProdutos fProducts = new FuncoesProdutos();
 
         System.out.println("\n\n============ EDITAR PRODUTO ============");
 
         int flag = 1;
-        int flag_erro = 1;
+        int flag_error = 1;
 
         while (flag == 1) {
             Scanner scannerNUM = new Scanner(System.in);
@@ -27,16 +27,16 @@ public class MenuEditarProduto {
                 System.out.print("Insira o id do produto a ser editado: ");
                 int id = scannerNUM.nextInt();
 
-                JsonObject produto = fProdutos.consultarProduto(id);
+                JsonObject products = fProducts.consultProduct(id);
 
-                if (!produto.isEmpty()){
+                if (!products.isEmpty()){
                     System.out.println("\n======== INFORMAÇÕES ANTIGAS ========");
-                    System.out.println(" - Nome: " + produto.get("nome"));
-                    System.out.println(" - Descrição: " + produto.get("descricao"));
-                    System.out.println(" - Preço: " + produto.get("preco"));
-                    System.out.println(" - Quantidade: " + produto.get("quantidade"));
-                    System.out.println(" - Data de criação: " + produto.get("dtcreate"));
-                    System.out.println(" - Data de edição: " + produto.get("dtupdate"));
+                    System.out.println(" - Nome: " + products.get("nome"));
+                    System.out.println(" - Descrição: " + products.get("descricao"));
+                    System.out.println(" - Preço: " + products.get("preco"));
+                    System.out.println(" - Quantidade: " + products.get("quantidade"));
+                    System.out.println(" - Data de criação: " + products.get("dtcreate"));
+                    System.out.println(" - Data de edição: " + products.get("dtupdate"));
                     System.out.println("=====================================");
 
 
@@ -51,11 +51,11 @@ public class MenuEditarProduto {
                     System.out.print(" - Quantidade: ");
                     int newAmount = scannerNUM.nextInt();
 
-                    flag_erro = 2;
+                    flag_error = 2;
                     System.out.print(" - Preço: ");
                     float newPrice = scannerNUM.nextFloat();
 
-                    if (fProdutos.validarAmount(newAmount)) {
+                    if (fProducts.validateAmount(newAmount)) {
                         System.out.println("\n=========================================================");
                         System.out.println("Quantidade do produto não pode ser inferior a uma unidade");
                         System.out.println("          Reinicie o programa e tente novamente");
@@ -65,7 +65,7 @@ public class MenuEditarProduto {
 
                     else {
 
-                        if (fProdutos.validarAtualizacao(newName, newDescription, newPrice, newAmount, produto)) {
+                        if (fProducts.validateUpdate(newName, newDescription, newPrice, newAmount, products)) {
                             System.out.println("\n=================================");
                             System.out.println("\n   Nenhuma informação alterada");
                             System.out.println("\u001B[31m!!! ATUALIZAÇÃO NÃO EFETUADA !!!\u001B[m");
@@ -74,7 +74,7 @@ public class MenuEditarProduto {
                         }
 
                         else {
-                            fProdutos.editarProduto(produto.get("id").getAsInt(), newName, newDescription, newPrice, newAmount, produto.get("dtcreate").getAsString());
+                            fProducts.editProduct(products.get("id").getAsInt(), newName, newDescription, newPrice, newAmount, products.get("dtcreate").getAsString());
 
                             System.out.println("\n======================================");
                             System.out.println("\u001B[32m!!! PRODUTO ATUALIZADO COM SUCESSO !!!\u001B[m");
@@ -86,7 +86,7 @@ public class MenuEditarProduto {
 
                 else {
                     flag = 2;
-                    fProdutos.delete(id);
+                    fProducts.deleteProduct(id);
 
                     System.out.println("\n========================================");
                     System.out.println("\n         Produto não encontrado");
@@ -97,7 +97,7 @@ public class MenuEditarProduto {
 
             catch (InputMismatchException inputMismatchException) {
 
-                if (flag_erro == 1) {
+                if (flag_error == 1) {
                     System.out.println("\n=======================================================");
                     System.out.println("\u001B[31m                     !!! ERRO !!!  \u001B[m");
                     System.out.println("Valor digitado fora dos parâmetros de um número inteiro");

@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class MenuDeleteProduto {
 
-    public void excluirProduto() {
-        FuncoesProdutos fProdutos = new FuncoesProdutos();
+    public void deleteProduct() {
+        FuncoesProdutos fProducts = new FuncoesProdutos();
 
         System.out.println("\n===== EXCLUINDO PRODUTO =====");
 
@@ -21,8 +21,8 @@ public class MenuDeleteProduto {
                 int id = scanner.nextInt();
                 flag = 2;
 
-                if (!fProdutos.consultarProduto(id).isEmpty()) {
-                    fProdutos.delete(id);
+                if (!fProducts.consultProduct(id).isEmpty()) {
+                    fProducts.deleteProduct(id);
 
                     System.out.println("\n======================================");
                     System.out.println("\n\u001B[32m !!! PRODUTO EXCLUIDO COM SUCESSO !!! \u001B[m");

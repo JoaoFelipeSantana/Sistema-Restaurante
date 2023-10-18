@@ -17,11 +17,11 @@ import java.nio.file.Paths;
 public class PedidoDAO {
 
     // Adicionando um pedido ao arquivo pedidos.json
-    public void creat(JsonArray novoPedido) throws IOException {
+    public void creat(JsonArray newOrder) throws IOException {
         FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\pedidos.json");
         BufferedWriter wr = new BufferedWriter(writer);
 
-        wr.write(novoPedido.toString());
+        wr.write(newOrder.toString());
         wr.close();
         writer.close();
     }
@@ -36,15 +36,15 @@ public class PedidoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
-            JsonArray arrayNovo = new JsonArray();
+            JsonArray arrayNew = new JsonArray();
 
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
                     JsonObject local = element.getAsJsonObject();
-                    arrayNovo.add(local);
+                    arrayNew.add(local);
                 }
             }
-            return arrayNovo;
+            return arrayNew;
         }
     }
 
@@ -56,29 +56,29 @@ public class PedidoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
-            JsonArray arrayNovo = new JsonArray();
-            JsonObject pedidoDelete = new JsonObject();
+            JsonArray arrayNew = new JsonArray();
+            JsonObject orderDelete = new JsonObject();
 
             for (JsonElement element: array) {
                 if (element.isJsonObject()) {
-                    JsonObject pedido = element.getAsJsonObject();
-                    if (pedido.get("id_mesa").getAsInt() == id_table) {
-                        pedidoDelete = pedido;
+                    JsonObject order = element.getAsJsonObject();
+                    if (order.get("id_mesa").getAsInt() == id_table) {
+                        orderDelete = order;
                     }
                     else {
-                        arrayNovo.add(pedido);
+                        arrayNew.add(order);
                     }
                 }
             }
-            creat(arrayNovo);
-            return pedidoDelete;
+            creat(arrayNew);
+            return orderDelete;
         }
         catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public JsonObject consultarPedido(int id_table) {
+    public JsonObject consultProduct(int id_table) {
         String filePath = "src\\main\\java\\com\\joao\\database\\pedidos.json";
         Path path = Paths.get(filePath);
 
@@ -86,17 +86,17 @@ public class PedidoDAO {
             JsonParser parser = new JsonParser();
             JsonElement four = parser.parse(reader);
             JsonArray array = four.getAsJsonArray();
-            JsonObject vazio = new JsonObject();
+            JsonObject empty = new JsonObject();
 
             for (JsonElement element : array) {
                 if (element.isJsonObject()) {
-                    JsonObject pedido = element.getAsJsonObject();
-                    if (pedido.get("id_mesa").getAsInt() == id_table) {
-                        return pedido;
+                    JsonObject order = element.getAsJsonObject();
+                    if (order.get("id_mesa").getAsInt() == id_table) {
+                        return order;
                     }
                 }
             }
-            return vazio;
+            return empty;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

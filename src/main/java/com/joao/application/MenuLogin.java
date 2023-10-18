@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class MenuLogin {
 
-    public void validarLogin() {
+    public void validateLogin() {
         Scanner scanner = new Scanner(System.in);
         MenuAdimin adimin = new MenuAdimin();
-        MenuIniciar iniciar = new MenuIniciar();
+        MenuIniciar start = new MenuIniciar();
 
         String [] infosLogin = new String[2];
 
@@ -39,13 +39,13 @@ public class MenuLogin {
                 System.out.println("\n========================");
                 System.out.println("\u001B[32m!!! ACESSO PERMITIDO !!!\u001B[m");
                 System.out.println("========================");
-                adimin.menuProduto();
+                adimin.menuProduct();
             }
             else {
                 System.out.println("\n=====================");
                 System.out.println("\u001B[31m!!! ACESSO NEGADO !!!\u001B[m");
                 System.out.println("=====================");
-                iniciar.menuUsuario();
+                start.menuUsers();
             }
         }
         catch (IOException e) {

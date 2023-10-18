@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class MenuDeletarPedido {
 
-    public void deletarPedido() {
-        FuncoesPedidos fPedidos = new FuncoesPedidos();
+    public void deleteOrder() {
+        FuncoesPedidos fOrders = new FuncoesPedidos();
 
         System.out.println("\n======== EXCLUINDO MESA ========");
         int flag = 1;
@@ -20,8 +20,8 @@ public class MenuDeletarPedido {
                 int id_table = scanner.nextInt();
                 flag = 2;
 
-                if (!fPedidos.consultarPedido(id_table).isEmpty()) {
-                    fPedidos.excluirPedido(id_table);
+                if (!fOrders.consultOrder(id_table).isEmpty()) {
+                    fOrders.deleteOrder(id_table);
                     System.out.println("\n===================================");
                     System.out.println("\n\u001B[32m !!! MESA EXCLUIDO COM SUCESSO !!! \u001B[m");
                     System.out.println("===================================");

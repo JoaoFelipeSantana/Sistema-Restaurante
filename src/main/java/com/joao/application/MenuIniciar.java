@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class MenuIniciar {
     ValidacaoEscolhaMenu validar = new ValidacaoEscolhaMenu();
-    public void menuUsuario() throws IOException {
+    public void menuUsers() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        String opcao;
+        String option;
 
         while (true) {
             System.out.println("\n=========== USUÁRIO ===========");
@@ -17,10 +17,10 @@ public class MenuIniciar {
                     "\n [2] Cliente" +
                     "\n===============================");
             System.out.print("Digite a opção que deseja: ");
-            opcao = scanner.next();
+            option = scanner.next();
 
-            if (opcao.equals("1") || opcao.equals("2")) {
-                validar.validarUsuario(opcao.strip());
+            if (option.equals("1") || option.equals("2")) {
+                validar.validateUsers(option.strip());
                 break;
             }
             else {

@@ -5,80 +5,80 @@ import com.joao.application.*;
 import java.io.IOException;
 
 public class ValidacaoEscolhaMenu {
-    public void validarUsuario(String opcao) throws IOException {
+    public void validateUsers(String option) throws IOException {
 
-        if (opcao.equals("1")) {
+        if (option.equals("1")) {
             MenuLogin login = new MenuLogin();
-            login.validarLogin();
+            login.validateLogin();
         }
         else{
-            MenuCliente cliente = new MenuCliente();
-            cliente.menuPedido();
+            MenuCliente client = new MenuCliente();
+            client.menuOrder();
         }
     }
 
-    public void validarAdimin(String opcao) throws IOException {
+    public void validateAdimin(String option) throws IOException {
 
-        switch (opcao){
+        switch (option){
             case "1":
-                MenuNovoProduto novoProduto = new MenuNovoProduto();
-                novoProduto.infoRegistro();
+                MenuNovoProduto newProduct = new MenuNovoProduto();
+                newProduct.newProduct();
                 break;
 
             case "2":
-                MenuEditarProduto atualizarProduto = new MenuEditarProduto();
-                atualizarProduto.editarProduto();
+                MenuEditarProduto updateProduct = new MenuEditarProduto();
+                updateProduct.editProduct();
                 break;
 
             case "3":
-                MenuConsultarProdutoTudo consultarTudo = new MenuConsultarProdutoTudo();
-                consultarTudo.consultarProdutos();
+                MenuConsultarProdutoTudo consultAll = new MenuConsultarProdutoTudo();
+                consultAll.consultProducts();
                 break;
 
             case "4":
-                MenuDeleteProduto deleteProduto = new MenuDeleteProduto();
-                deleteProduto.excluirProduto();
+                MenuDeleteProduto deleteProduct = new MenuDeleteProduto();
+                deleteProduct.deleteProduct();
                 break;
 
             case "5":
-                MenuNovoPedido menuNovoPedido = new MenuNovoPedido();
-                menuNovoPedido.novoPedido();
+                MenuNovoPedido newOrder = new MenuNovoPedido();
+                newOrder.newOrder();
                 break;
 
             case "6":
-                MenuDeletarPedido menuDeletarPedido = new MenuDeletarPedido();
-                menuDeletarPedido.deletarPedido();
+                MenuDeletarPedido deleteOrder = new MenuDeletarPedido();
+                deleteOrder.deleteOrder();
                 break;
 
             case "7":
-                MenuPedidos menuPedidos = new MenuPedidos();
-                menuPedidos.verPedidos();
+                MenuPedidos orders = new MenuPedidos();
+                orders.consultOrders();
                 break;
 
             case "0":
-                MenuIniciar voltar = new MenuIniciar();
-                voltar.menuUsuario();
+                MenuIniciar back = new MenuIniciar();
+                back.menuUsers();
                 break;
         }
     }
 
-    public void validarCliente(String opcao) throws IOException{
+    public void validateClient(String option) throws IOException{
 
-        switch (opcao){
+        switch (option){
 
             case "1":
-                MenuEditarPedido menuEditarPedido = new MenuEditarPedido();
-                menuEditarPedido.ediatrPedido();
+                MenuEditarPedido editOrder = new MenuEditarPedido();
+                editOrder.editOrder();
                 break;
 
             case "2":
-                MenuConsultarPedidoUnico consultarPedido = new MenuConsultarPedidoUnico();
-                consultarPedido.consultarPedidoUnico();
+                MenuConsultarPedidoUnico consultOrder = new MenuConsultarPedidoUnico();
+                consultOrder.consultSingleOrder();
                 break;
 
             case "0":
-                MenuIniciar voltar = new MenuIniciar();
-                voltar.menuUsuario();
+                MenuIniciar back = new MenuIniciar();
+                back.menuUsers();
                 break;
         }
     }

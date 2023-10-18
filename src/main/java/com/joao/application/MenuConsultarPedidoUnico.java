@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class MenuConsultarPedidoUnico {
 
-    public void consultarPedidoUnico() {
-        FuncoesPedidos fPedidos = new FuncoesPedidos();
+    public void consultSingleOrder() {
+        FuncoesPedidos fOrders = new FuncoesPedidos();
 
         System.out.println("\n============== CONSULTANDO PEDIDO ==============");
 
@@ -22,13 +22,13 @@ public class MenuConsultarPedidoUnico {
                 int id_table = scanner.nextInt();
                 flag = 2;
 
-                JsonObject pedido = fPedidos.consultarPedido(id_table);
+                JsonObject order = fOrders.consultOrder(id_table);
 
-                if (!pedido.isEmpty()) {
+                if (!order.isEmpty()) {
                     System.out.println("\n========== INFOMRAÇÕES DA MESA ==========");
-                    System.out.println(" - Número da mesa: " + pedido.get("id_mesa"));
-                    System.out.println(" - Pedido(s): " + pedido.get("pedido"));
-                    System.out.println(" - Última edição: " + pedido.get("dtupdate"));
+                    System.out.println(" - Número da mesa: " + order.get("id_mesa"));
+                    System.out.println(" - Pedido(s): " + order.get("pedido"));
+                    System.out.println(" - Última edição: " + order.get("dtupdate"));
                     System.out.println("=========================================");
                 }
                 else {

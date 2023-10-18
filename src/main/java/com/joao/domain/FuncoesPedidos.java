@@ -13,54 +13,54 @@ public class FuncoesPedidos {
 
     PedidoDAO pedidoCRUD = new PedidoDAO();
 
-    public void criarPedido(int id_table, List<Integer> order) throws IOException {
-        JsonObject novoPedido = new JsonObject();
+    public void createOrder(int id_table, List<Integer> order) throws IOException {
+        JsonObject newOrder = new JsonObject();
 
-        JsonArray pedidoArray = pedidoCRUD.read();
+        JsonArray orderArray = pedidoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
 
-        novoPedido.addProperty("id", (int) pedidoArray.size());
-        novoPedido.addProperty("id_mesa", (int) id_table);
-        novoPedido.addProperty("pedido", ((List<Integer>) order).toString());
-        novoPedido.addProperty("dtcreate", (String) dtf.format(date));
+        newOrder.addProperty("id", (int) orderArray.size());
+        newOrder.addProperty("id_mesa", (int) id_table);
+        newOrder.addProperty("pedido", ((List<Integer>) order).toString());
+        newOrder.addProperty("dtcreate", (String) dtf.format(date));
 
-        pedidoArray.add(novoPedido);
+        orderArray.add(newOrder);
 
-        pedidoCRUD.creat(pedidoArray);
+        pedidoCRUD.creat(orderArray);
     }
 
-    public JsonArray verPedidos() throws IOException {
+    public JsonArray viewOrders() throws IOException {
         return pedidoCRUD.read();
     }
 
-    public void excluirPedido(int id_table) {
+    public void deleteOrder(int id_table) {
         pedidoCRUD.delete(id_table);
     }
 
-    public JsonObject consultarPedido(int id_table) {
-        JsonObject pedido = pedidoCRUD.consultarPedido(id_table);
-        return pedido;
+    public JsonObject consultOrder(int id_table) {
+        JsonObject order = pedidoCRUD.consultProduct(id_table);
+        return order;
     }
 
-    public void editarPedido (int id, int id_table, List<Integer> order, String dtcreate) throws IOException {
-        JsonObject novoPedido = new JsonObject();
+    public void editOrder(int id, int id_table, List<Integer> order, String dtcreate) throws IOException {
+        JsonObject newOrder = new JsonObject();
 
-        JsonArray pedidoArray = pedidoCRUD.read();
+        JsonArray orderArray = pedidoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime date = LocalDateTime.now();
 
-        novoPedido.addProperty("id", (int) id);
-        novoPedido.addProperty("id_mesa", (int) id_table);
-        novoPedido.addProperty("pedido", ((List<Integer>) order).toString());
-        novoPedido.addProperty("dtcreate", (String) dtcreate);
-        novoPedido.addProperty("dtupdate", (String) dtf.format(date));
+        newOrder.addProperty("id", (int) id);
+        newOrder.addProperty("id_mesa", (int) id_table);
+        newOrder.addProperty("pedido", ((List<Integer>) order).toString());
+        newOrder.addProperty("dtcreate", (String) dtcreate);
+        newOrder.addProperty("dtupdate", (String) dtf.format(date));
 
-        pedidoArray.add(novoPedido);
+        orderArray.add(newOrder);
 
-        pedidoCRUD.creat(pedidoArray);
+        pedidoCRUD.creat(orderArray);
     }
 
 }
