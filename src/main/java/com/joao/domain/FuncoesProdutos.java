@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.joao.infrastructure.daos.ProdutoDAO;
+import com.joao.infrastructure.entity.Product;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -16,24 +17,16 @@ public class FuncoesProdutos {
 
     // Criando um produto novo
     public void createProduct(String name, String description, float price, int amount) throws IOException {
-        // Criando um novo objeto para o produto novo
-        JsonObject newProduct = new JsonObject();
         JsonArray arrayNew = produtoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
+        LocalDateTime dtcreate = LocalDateTime.now();
 
-        // Adicionando informações
-        newProduct.addProperty("id", (int) arrayNew.size());
-        newProduct.addProperty("nome", (String) name);
-        newProduct.addProperty("descricao", (String) description);
-        newProduct.addProperty("preco", (float) price);
-        newProduct.addProperty("quantidade", (int) amount);
-        newProduct.addProperty("dtcreate", (String) dtf.format(date));
+        String dtupdate = null;
 
-        arrayNew.add(newProduct);
+        Product product = new Product(arrayNew.size(), name, description, price, amount, dtf.format(dtcreate), dtupdate);
 
-        produtoCRUD.create(arrayNew);
+        produtoCRUD.create(product);
 
     }
 
@@ -52,25 +45,14 @@ public class FuncoesProdutos {
     }
 
     public void editProduct(int id, String name, String description, float price, int amount, String dtcreate) throws IOException {
-        JsonObject editProduct = new JsonObject();
         JsonArray arrayNovo = produtoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
+        LocalDateTime dtupdate = LocalDateTime.now();
 
+        Product editProduct = new Product(id, name, description, price, amount, dtcreate, dtf.format(dtupdate));
 
-        editProduct.addProperty("id", (int) id);
-        editProduct.addProperty("nome", (String) name);
-        editProduct.addProperty("descricao", (String) description);
-        editProduct.addProperty("preco", (float) price);
-        editProduct.addProperty("quantidade", (int) amount);
-        editProduct.addProperty("dtcreate", (String) dtcreate);
-        editProduct.addProperty("dtupdate", (String) dtf.format(date));
-
-        arrayNovo.add(editProduct);
-
-        produtoCRUD.create(arrayNovo);
-
+        produtoCRUD.create(editProduct);
     }
 
     public boolean validateProduct(String name, String description) throws IOException {
