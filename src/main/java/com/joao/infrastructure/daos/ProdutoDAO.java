@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonElement;
+import com.joao.infrastructure.entity.Product;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -18,11 +19,35 @@ import java.nio.file.Paths;
 public class ProdutoDAO {
 
     // Criando um novo produto
-    public void create(JsonArray newProduct) throws IOException{
+    public void create(Product product) throws IOException{
         FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\produtos.json");
         BufferedWriter wr = new BufferedWriter(writer);
 
-        wr.write(newProduct.toString());
+        JsonObject newProduct = new JsonObject();
+        JsonArray array = new JsonArray();
+
+        // Adicionando informações
+        newProduct.addProperty("id", (int) product.getId());
+        newProduct.addProperty("nome", (String) product.getName());
+        newProduct.addProperty("descricao", (String) product.getDescription());
+        newProduct.addProperty("preco", (float) product.getPrice());
+        newProduct.addProperty("quantidade", (int) product.getAmount());
+        newProduct.addProperty("dtcreate", (String) product.getDtcreate());
+        newProduct.addProperty("dtupdate" , (String) product.getDtupdate());
+
+        array.add(newProduct);
+
+        wr.write(array.toString());
+        wr.close();
+        writer.close();
+
+    }
+
+    public void deleteCreate(JsonArray array) throws IOException {
+        FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\produtos.json");
+        BufferedWriter wr = new BufferedWriter(writer);
+
+        wr.write(array.toString());
         wr.close();
         writer.close();
 
@@ -73,7 +98,7 @@ public class ProdutoDAO {
                     }
                 }
             }
-            create(arrayNew);
+            deleteCreate(arrayNew);
             return deleteProduct;
 
         } catch (IOException e) {
