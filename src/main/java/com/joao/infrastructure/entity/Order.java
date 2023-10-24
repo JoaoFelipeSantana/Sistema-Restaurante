@@ -16,4 +16,24 @@ public class Order {
         this.dtupdate = dtupdate;
         this.dtcreat = dtcreat;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getId_table() {
+        return id_table;
+    }
+
+    public String getListProducts() {
+        return listProducts;
+    }
+
+    public String getDtupdate() {
+        return dtupdate;
+    }
+
+    public String getDtcreat() {
+        return dtcreat;
+    }
 }
