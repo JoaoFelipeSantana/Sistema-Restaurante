@@ -13,22 +13,23 @@ public class FuncoesPedidos {
 
     PedidoDAO pedidoCRUD = new PedidoDAO();
 
-    public void createOrder(int id_table, List<Integer> order) throws IOException {
-        JsonObject newOrder = new JsonObject();
+    public void createOrder(int id_table, List<Integer> dishes) throws IOException {
+        JsonArray order = pedidoCRUD.read();
 
-        JsonArray orderArray = pedidoCRUD.read();
+        JsonObject newOrder =  new JsonObject();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
+        LocalDateTime dtcreate = LocalDateTime.now();
 
-        newOrder.addProperty("id", (int) orderArray.size());
+        newOrder.addProperty("id", (int) order.size());
         newOrder.addProperty("id_mesa", (int) id_table);
-        newOrder.addProperty("pedido", ((List<Integer>) order).toString());
-        newOrder.addProperty("dtcreate", (String) dtf.format(date));
+        newOrder.addProperty("pedido", (String) dishes.toString());
+        newOrder.addProperty("dtcreate", (String) dtf.format(dtcreate));
 
-        orderArray.add(newOrder);
+        order.add(newOrder);
 
-        pedidoCRUD.creat(orderArray);
+        pedidoCRUD.create(order);
+
     }
 
     public JsonArray viewOrders() throws IOException {
@@ -44,23 +45,24 @@ public class FuncoesPedidos {
         return order;
     }
 
-    public void editOrder(int id, int id_table, List<Integer> order, String dtcreate) throws IOException {
-        JsonObject newOrder = new JsonObject();
+    public void editOrder(int id, int id_table, List<Integer> dishes, String dtcreate) throws IOException {
+        JsonArray order = pedidoCRUD.read();
 
-        JsonArray orderArray = pedidoCRUD.read();
+        JsonObject newOrder =  new JsonObject();
+        JsonArray array = new JsonArray();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        LocalDateTime date = LocalDateTime.now();
+        LocalDateTime dtupdate = LocalDateTime.now();
 
-        newOrder.addProperty("id", (int) id);
+        newOrder.addProperty("id", (int) order.size());
         newOrder.addProperty("id_mesa", (int) id_table);
-        newOrder.addProperty("pedido", ((List<Integer>) order).toString());
+        newOrder.addProperty("pedido", (String) dishes.toString());
         newOrder.addProperty("dtcreate", (String) dtcreate);
-        newOrder.addProperty("dtupdate", (String) dtf.format(date));
+        newOrder.addProperty("dtupdate", (String) dtf.format(dtupdate));
 
-        orderArray.add(newOrder);
+        array.add(newOrder);
 
-        pedidoCRUD.creat(orderArray);
+        pedidoCRUD.create(array);
     }
 
 }
