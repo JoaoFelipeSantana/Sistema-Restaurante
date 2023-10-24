@@ -16,9 +16,13 @@ import java.nio.file.Paths;
 
 public class PedidoDAO {
 
+    // COMUNICAÇÃO COM O JSON ESTABELECIDA PARA TODAS AS FUNÇÕES
+    String filePath =  "src\\main\\java\\com\\joao\\database\\orders.json";
+    Path path = Paths.get(filePath);
+
     // Adicionando um pedido ao arquivo pedidos.json
-    public void creat(JsonArray newOrder) throws IOException {
-        FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\pedidos.json");
+    public void create(JsonArray newOrder) throws IOException {
+        FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\orders.json");
         BufferedWriter wr = new BufferedWriter(writer);
 
         wr.write(newOrder.toString());
@@ -29,8 +33,6 @@ public class PedidoDAO {
 
     // Lendo o arquivo pedidos.jon
     public JsonArray read() throws IOException {
-        String filePath =  "src\\main\\java\\com\\joao\\database\\pedidos.json";
-        Path path = Paths.get(filePath);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             JsonParser parser = new JsonParser();
@@ -49,8 +51,6 @@ public class PedidoDAO {
     }
 
     public JsonObject delete(int id_table) {
-        String filePath = "src\\main\\java\\com\\joao\\database\\pedidos.json";
-        Path path = Paths.get(filePath);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             JsonParser parser = new JsonParser();
@@ -70,7 +70,7 @@ public class PedidoDAO {
                     }
                 }
             }
-            creat(arrayNew);
+            create(arrayNew);
             return orderDelete;
         }
         catch (IOException e) {
@@ -79,8 +79,6 @@ public class PedidoDAO {
     }
 
     public JsonObject consultProduct(int id_table) {
-        String filePath = "src\\main\\java\\com\\joao\\database\\pedidos.json";
-        Path path = Paths.get(filePath);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             JsonParser parser = new JsonParser();
