@@ -19,12 +19,11 @@ import java.nio.file.Paths;
 public class ProdutoDAO {
 
     // Criando um novo produto
-    public void create(Product product) throws IOException{
+    public void create(Product product, JsonArray array) throws IOException{
         FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\produtos.json");
         BufferedWriter wr = new BufferedWriter(writer);
 
         JsonObject newProduct = new JsonObject();
-        JsonArray array = new JsonArray();
 
         // Adicionando informações
         newProduct.addProperty("id", (int) product.getId());
