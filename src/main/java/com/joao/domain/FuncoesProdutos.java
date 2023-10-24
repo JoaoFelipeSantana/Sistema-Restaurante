@@ -22,11 +22,11 @@ public class FuncoesProdutos {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime dtcreate = LocalDateTime.now();
 
-        String dtupdate = null;
+        String dtupdate = "null";
 
         Product product = new Product(arrayNew.size(), name, description, price, amount, dtf.format(dtcreate), dtupdate);
 
-        produtoCRUD.create(product);
+        produtoCRUD.create(product, arrayNew);
 
     }
 
@@ -40,8 +40,7 @@ public class FuncoesProdutos {
     }
 
     public JsonObject consultProduct(int id) {
-        JsonObject product = produtoCRUD.consultProduct(id);
-        return product;
+        return produtoCRUD.consultProduct(id);
     }
 
     public void editProduct(int id, String name, String description, float price, int amount, String dtcreate) throws IOException {
@@ -52,7 +51,7 @@ public class FuncoesProdutos {
 
         Product editProduct = new Product(id, name, description, price, amount, dtcreate, dtf.format(dtupdate));
 
-        produtoCRUD.create(editProduct);
+        produtoCRUD.create(editProduct, arrayNovo);
     }
 
     public boolean validateProduct(String name, String description) throws IOException {
