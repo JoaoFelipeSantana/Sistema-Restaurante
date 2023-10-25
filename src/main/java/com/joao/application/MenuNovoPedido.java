@@ -27,21 +27,7 @@ public class MenuNovoPedido {
                 System.out.print(" - Informe o número da sua mesa: ");
                 id_table = scannerPedido.nextInt();
 
-                int option = 1;
-                while (option == 1) {
-                    System.out.print(" - Qual opção do cardápio deseja? ");
-                    optionDishes = scannerPedido.nextInt();
-
-                    dishes.add(optionDishes);
-
-                    System.out.println("\n-----------------------------");
-                    System.out.print("Deseja adicionar outro prato?" +
-                            "\n       [1]SIM   [2]NÃO" +
-                            "\n-----------------------------\n" +
-                            "\nDigite a opção que deseja: ");
-                    option = scannerPedido.nextInt();
-
-                }
+                dishes.add(0);
                 flag = 2;
 
                 fOrders.createOrder(id_table, dishes);
