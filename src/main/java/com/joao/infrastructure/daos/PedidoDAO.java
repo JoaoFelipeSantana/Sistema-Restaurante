@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.joao.infrastructure.entity.Order;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,15 +18,34 @@ import java.nio.file.Paths;
 public class PedidoDAO {
 
     // COMUNICAÇÃO COM O JSON ESTABELECIDA PARA TODAS AS FUNÇÕES
-    String filePath =  "src\\main\\java\\com\\joao\\database\\orders.json";
+    String filePath =  "src\\main\\java\\com\\joao\\database\\pedidos.json";
     Path path = Paths.get(filePath);
 
     // Adicionando um pedido ao arquivo pedidos.json
-    public void create(JsonArray newOrder) throws IOException {
-        FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\orders.json");
+    public void create(Order order, JsonArray arrayNovo) throws IOException {
+        FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\pedidos.json");
         BufferedWriter wr = new BufferedWriter(writer);
 
-        wr.write(newOrder.toString());
+        JsonObject newOrder = new JsonObject();
+
+        newOrder.addProperty("id", (int) order.getId());
+        newOrder.addProperty("id_mesa", (int) order.getId_table());
+        newOrder.addProperty("pedido", (String) order.getListProducts());
+        newOrder.addProperty("dtcreate", (String) order.getDtcreat());
+        newOrder.addProperty("dtupdate", (String) order.getDtupdate());
+
+        arrayNovo.add(newOrder);
+
+        wr.write(arrayNovo.toString());
+        wr.close();
+        writer.close();
+    }
+
+    public void createDelete(JsonArray arrayNew) throws IOException {
+        FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\pedidos.json");
+        BufferedWriter wr = new BufferedWriter(writer);
+
+        wr.write(arrayNew.toString());
         wr.close();
         writer.close();
     }
@@ -70,7 +90,7 @@ public class PedidoDAO {
                     }
                 }
             }
-            create(arrayNew);
+            createDelete(arrayNew);
             return orderDelete;
         }
         catch (IOException e) {
