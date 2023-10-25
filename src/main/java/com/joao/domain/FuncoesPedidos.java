@@ -3,6 +3,7 @@ package com.joao.domain;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.joao.infrastructure.daos.PedidoDAO;
+import com.joao.infrastructure.entity.Order;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -14,21 +15,16 @@ public class FuncoesPedidos {
     PedidoDAO pedidoCRUD = new PedidoDAO();
 
     public void createOrder(int id_table, List<Integer> dishes) throws IOException {
-        JsonArray order = pedidoCRUD.read();
-
-        JsonObject newOrder =  new JsonObject();
+        JsonArray arrayNovo = pedidoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime dtcreate = LocalDateTime.now();
 
-        newOrder.addProperty("id", (int) order.size());
-        newOrder.addProperty("id_mesa", (int) id_table);
-        newOrder.addProperty("pedido", (String) dishes.toString());
-        newOrder.addProperty("dtcreate", (String) dtf.format(dtcreate));
+        String dtupdate = null;
 
-        order.add(newOrder);
+        Order order = new Order(arrayNovo.size(), id_table, dishes.toString(), dtf.format(dtcreate), dtupdate);
 
-        pedidoCRUD.create(order);
+        pedidoCRUD.create(order ,arrayNovo);
 
     }
 
@@ -46,23 +42,14 @@ public class FuncoesPedidos {
     }
 
     public void editOrder(int id, int id_table, List<Integer> dishes, String dtcreate) throws IOException {
-        JsonArray order = pedidoCRUD.read();
-
-        JsonObject newOrder =  new JsonObject();
-        JsonArray array = new JsonArray();
+        JsonArray arrayNovo = pedidoCRUD.read();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime dtupdate = LocalDateTime.now();
 
-        newOrder.addProperty("id", (int) order.size());
-        newOrder.addProperty("id_mesa", (int) id_table);
-        newOrder.addProperty("pedido", (String) dishes.toString());
-        newOrder.addProperty("dtcreate", (String) dtcreate);
-        newOrder.addProperty("dtupdate", (String) dtf.format(dtupdate));
+        Order order = new Order(id, id_table, dishes.toString(), dtcreate, dtf.format(dtupdate));
 
-        array.add(newOrder);
-
-        pedidoCRUD.create(array);
+        pedidoCRUD.create(order, arrayNovo);
     }
 
 }
