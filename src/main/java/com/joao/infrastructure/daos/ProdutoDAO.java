@@ -18,6 +18,11 @@ import java.nio.file.Paths;
 
 public class ProdutoDAO {
 
+    // COMUNICAÇÃO COM O JSON ESTABELECIDA PARA TODAS AS FUNÇÕES
+    String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
+    Path path = Paths.get(filePath);
+
+
     // Criando um novo produto
     public void create(Product product, JsonArray array) throws IOException{
         FileWriter writer = new FileWriter("src\\main\\java\\com\\joao\\database\\produtos.json");
@@ -54,8 +59,6 @@ public class ProdutoDAO {
 
     // Lendo o arquivo produtos.json
     public JsonArray read() throws IOException {
-        String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
-        Path path = Paths.get(filePath);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 
@@ -76,8 +79,6 @@ public class ProdutoDAO {
 
     // Deletando um produto
     public JsonObject delete(int id) {
-        String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
-        Path path = Paths.get(filePath);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             JsonParser parser = new JsonParser();
@@ -106,8 +107,6 @@ public class ProdutoDAO {
     }
 
     public JsonObject consultProduct(int id) {
-        String filePath = "src\\main\\java\\com\\joao\\database\\produtos.json";
-        Path path = Paths.get(filePath);
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             JsonParser parser = new JsonParser();
